@@ -1,0 +1,1902 @@
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-label="Loading page">
+    <svg class="preloader-dumbbell" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43 1.43 1.43 2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29l-1.43-1.43z"/>
+    </svg>
+    <div class="preloader-title">THE MUSCLE <span>HUT</span></div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Custom Cursor Elements (Desktop) -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-ring" id="cursorRing"></div>
+
+  <!-- =========================================================================
+       1. STICKY NAVBAR
+       ========================================================================= -->
+  <header class="site-navbar" id="siteNavbar">
+    <div class="container navbar-inner">
+      <a href="#hero" class="navbar-brand" aria-label="The Muscle Hut Gym Home">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-dumbbell"></i>
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-main-title">MUSCLE <span>HUT</span></div>
+          <div class="brand-sub-location">SECTOR 15 • SONIPAT</div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav aria-label="Primary Navigation">
+        <ul class="navbar-nav">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#programs" class="nav-link">Programs</a></li>
+          <li><a href="#trainers" class="nav-link">Trainers</a></li>
+          <li><a href="#schedule" class="nav-link">Schedule</a></li>
+          <li><a href="#bmi" class="nav-link">BMI Calc</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Navbar Right Controls -->
+      <div class="nav-right-controls">
+        <!-- Live Open Badge -->
+        <div class="live-status-pill" title="Gym Operating Hours">
+          <span class="live-dot"></span>
+          <span>OPEN 5:30 AM - 10 PM</span>
+        </div>
+
+        <!-- Cool Synth Audio Pump Button -->
+        <button class="audio-pump-btn" id="audioPumpBtn" title="Toggle Motivational Workout Hype Beat">
+          <div class="audio-bars">
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+            <span class="audio-bar"></span>
+          </div>
+          <span id="audioPumpText">PUMP BEAT</span>
+        </button>
+
+        <!-- Primary CTA -->
+        <a href="#pricing" class="btn btn-primary btn-sm d-none d-md-inline-flex">JOIN NOW</a>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-toggle" id="hamburgerBtn" aria-label="Toggle Mobile Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="nav-link mobile-link">Home</a></li>
+      <li><a href="#about" class="nav-link mobile-link">About</a></li>
+      <li><a href="#programs" class="nav-link mobile-link">Programs</a></li>
+      <li><a href="#trainers" class="nav-link mobile-link">Trainers</a></li>
+      <li><a href="#schedule" class="nav-link mobile-link">Schedule</a></li>
+      <li><a href="#bmi" class="nav-link mobile-link">BMI Calculator</a></li>
+      <li><a href="#pricing" class="nav-link mobile-link">Membership Plans</a></li>
+      <li><a href="#gallery" class="nav-link mobile-link">Transformation Gallery</a></li>
+      <li><a href="#testimonials" class="nav-link mobile-link">Member Reviews</a></li>
+      <li><a href="#contact" class="nav-link mobile-link">Free Trial & Contact</a></li>
+    </ul>
+    <div style="display:flex; flex-direction:column; gap:12px; width:100%; max-width:280px;">
+      <a href="#pricing" class="btn btn-primary mobile-link" style="width:100%;">JOIN NOW — ₹1,500/MO</a>
+      <a href="#contact" class="btn btn-secondary mobile-link" style="width:100%;">CLAIM FREE 1-DAY PASS</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- =========================================================================
+         2. HERO SECTION
+         ========================================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-media">
+        <!-- High-res authentic gym interior backdrop with error fallback -->
+        <img class="hero-bg-img" 
+             src="images/interior_main.jpg" 
+             alt="The Muscle Hut Gym Interior Sector 15 Sonipat"
+             onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no';" />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-glow-orb"></div>
+      <div class="bg-outline-text" style="top: 15%; right: -5%;">MUSCLE HUT</div>
+
+      <div class="container">
+        <div class="hero-content">
+          <!-- Animated Tag Badge -->
+          <div class="hero-badge-tag">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span>#1 HARDCORE FITNESS DESTINATION IN SONIPAT</span>
+          </div>
+
+          <!-- Main Animated Typography Headline -->
+          <h1 class="hero-headline">
+            BUILD YOUR <br>
+            <span class="hero-typing-wrap">
+              <span id="typingText">STRONGEST SELF</span>
+              <span class="typing-cursor"></span>
+            </span>
+          </h1>
+
+          <p class="hero-subheadline">
+            Welcome to <strong>The Muscle Hut Gym</strong> in Sector 15, Sonipat. High-performance bio-mechanical equipment, Olympic free weights, dedicated turf aerobics arena, and expert coaching. 
+            Transform your body for just <strong>₹1,500/month</strong>.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-bolt"></i>
+              <span>JOIN NOW — ₹1,500/MO</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>CLAIM FREE 1-DAY PASS</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges Strip -->
+          <div class="hero-trust-strip">
+            <div class="hero-trust-item">
+              <i class="fa-solid fa-star"></i>
+              <span><strong>4.9 Rating</strong> on Google Maps</span>
+            </div>
+            <div class="hero-trust-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Sector 15, Sonipat (Near Raju Dairy)</span>
+            </div>
+            <div class="hero-trust-item">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon-Sat: <strong>5:30 AM – 10:00 PM</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Down Indicator -->
+      <a href="#stats" class="hero-scroll-indicator" aria-label="Scroll to stats">
+        <div class="mouse-icon">
+          <div class="mouse-dot"></div>
+        </div>
+        <span>SCROLL DOWN</span>
+      </a>
+    </section>
+
+    <!-- =========================================================================
+         3. STATS COUNTER STRIP
+         ========================================================================= -->
+    <section class="stats-strip-section" id="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <!-- Stat 1 -->
+          <div class="stat-box reveal-fade-up">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-number-wrap">
+              <span class="counter" data-target="2500">0</span><span class="accent-plus">+</span>
+            </div>
+            <div class="stat-label">Active Members Transformed</div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="stat-box reveal-fade-up">
+            <div class="stat-icon"><i class="fa-solid fa-medal"></i></div>
+            <div class="stat-number-wrap">
+              <span class="counter" data-target="15">0</span><span class="accent-plus">+</span>
+            </div>
+            <div class="stat-label">Certified Elite Coaches</div>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="stat-box reveal-fade-up">
+            <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="stat-number-wrap">
+              <span class="counter" data-target="45">0</span><span class="accent-plus">+</span>
+            </div>
+            <div class="stat-label">Weekly Group Classes</div>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="stat-box reveal-fade-up">
+            <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div class="stat-number-wrap">
+              <span class="counter" data-target="8">0</span><span class="accent-plus">+</span>
+            </div>
+            <div class="stat-label">Years of Iron Dominance</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. ABOUT SECTION
+         ========================================================================= -->
+    <section class="section-padding about-section" id="about">
+      <div class="bg-outline-text" style="top: 20%; left: -5%;">DISCIPLINE</div>
+
+      <div class="container">
+        <div class="about-grid">
+          <!-- Media Showcase (Authentic Google Maps Photo) -->
+          <div class="about-media-stack reveal-fade-up">
+            <div class="about-main-img-wrap">
+              <img class="about-main-img" 
+                   src="images/interior_main.jpg" 
+                   alt="The Muscle Hut Gym Floor and Turf Arena"
+                   onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no';" />
+              <div class="about-img-overlay"></div>
+              
+              <!-- Real Google Maps Badge -->
+              <div class="verified-map-badge">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>VERIFIED FACILITY • SECTOR 15 SONIPAT</span>
+              </div>
+            </div>
+
+            <!-- Parallax Floating Stat Card -->
+            <div class="about-floating-card">
+              <div class="floating-card-icon">
+                <i class="fa-solid fa-weight-hanging"></i>
+              </div>
+              <div class="floating-card-text">
+                <h4>HEAVY IRON</h4>
+                <p>Top Bio-Mechanical Gear</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Story & Features -->
+          <div class="about-text-content reveal-fade-up">
+            <div class="section-subtitle-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>WHO WE ARE</span>
+            </div>
+            <h2 class="section-title">BUILT FOR RESULTS. <br><span class="text-neon">FORGED IN PASSION.</span></h2>
+            
+            <p class="about-story-p">
+              Located on Sector 15 Road, Rajiv Gandhi Colony in Sonipat, <strong>The Muscle Hut Gym</strong> was created with a single vision: to provide athletes, fitness enthusiasts, and beginners with an uncompromising, results-driven workout environment.
+            </p>
+            <p class="about-story-p" style="color: var(--text-muted); font-size: 1rem;">
+              From cutting-edge multi-station cable machines and Olympic free-weight zones to our dedicated green turf for cardio aerobics and high-octane Zumba sessions, we give you the tools, coaching, and energy to shatter your plateaus.
+            </p>
+
+            <!-- Feature Highlights List -->
+            <div class="about-features-list">
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <div class="feature-item-text">
+                  <h5>Bio-Mechanical Gear</h5>
+                  <p>Heavy duty pin-loaded & plate-loaded machines.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-person-running"></i></div>
+                <div class="feature-item-text">
+                  <h5>Dedicated Turf Arena</h5>
+                  <p>Specialized functional turf for agility, sprints & core.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                <div class="feature-item-text">
+                  <h5>Certified Trainers</h5>
+                  <p>Daily form correction and progressive programming.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="feature-item-text">
+                  <h5>Extended Hours</h5>
+                  <p>5:30 AM to 10:00 PM for all work & study schedules.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-shower"></i></div>
+                <div class="feature-item-text">
+                  <h5>Hygienic Facilities</h5>
+                  <p>Sanitized lockers, clean changing areas & RO water.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-item-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                <div class="feature-item-text">
+                  <h5>Diet & Nutrition</h5>
+                  <p>Custom macro meal protocols for fat loss & hypertrophy.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display:flex; flex-wrap:wrap; gap:16px;">
+              <a href="#programs" class="btn btn-primary">EXPLORE OUR PROGRAMS</a>
+              <a href="#contact" class="btn btn-secondary">VISIT GYM TODAY</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. PROGRAMS / CLASSES SECTION
+         ========================================================================= -->
+    <section class="section-padding programs-section" id="programs">
+      <div class="bg-outline-text" style="top: 10%; right: -2%;">PROGRAMS</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-fire"></i>
+            <span>ELITE TRAINING DISCIPLINES</span>
+          </div>
+          <h2 class="section-title">CHOOSE YOUR <span class="text-neon">BATTLEGROUND</span></h2>
+          <p class="section-description">
+            Tailored programs crafted for maximum physical transformation, raw power output, cardiovascular endurance, and athletic performance.
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <!-- Program 1 -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80" 
+                   alt="Weight Training and Bodybuilding at The Muscle Hut" />
+              <span class="program-badge">HYPERTROPHY</span>
+              <div class="program-icon-float"><i class="fa-solid fa-dumbbell"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">Weight Training & Iron</h3>
+              <p class="program-desc">
+                Targeted progressive overload training utilizing Olympic barbells, dumbbell tiers up to 50kg, and precision bio-mechanical isolation machines.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: High</span>
+                <button class="learn-more-link" onclick="openProgramModal('weight-training')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program 2 -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" 
+                   alt="CrossFit and Functional Turf Training" />
+              <span class="program-badge">STAMINA</span>
+              <div class="program-icon-float"><i class="fa-solid fa-arrows-spin"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">CrossFit & Turf Conditioning</h3>
+              <p class="program-desc">
+                Sled pushes, battle ropes, kettlebell snatches, and plyometric drills conducted on our dedicated indoor green turf track.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: Extreme</span>
+                <button class="learn-more-link" onclick="openProgramModal('crossfit')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program 3 (With real photo from Muscle Hut group aerobics session!) -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="images/group_fitness.jpg" 
+                   alt="Group Aerobics and Zumba class in action at The Muscle Hut"
+                   onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tth984a84hqELOhPd4_bw0xtOHBeK7R_BxIwGtQBqKR3YAPbwsUydVeIpfZMGL5dJQjXiRvZcl6fA7tHPOiwiYy2MQk3il0c4ijlxugaI_bY73N0rvk1GmmXSbA6bxpdmNplhn=s1600';" />
+              <span class="program-badge" style="color:#00e5ff; border-color:rgba(0,229,255,0.4);">LIVE CLASS</span>
+              <div class="program-icon-float"><i class="fa-solid fa-music"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">Zumba & Group Aerobics</h3>
+              <p class="program-desc">
+                Energetic, rhythm-driven cardio sessions designed to burn 600+ calories while boosting mood, coordination, and aerobic stamina in a welcoming group setting.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: Moderate</span>
+                <button class="learn-more-link" onclick="openProgramModal('zumba')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program 4 -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=800&q=80" 
+                   alt="Power Yoga and Mobility at The Muscle Hut" />
+              <span class="program-badge">RECOVERY</span>
+              <div class="program-icon-float"><i class="fa-solid fa-spa"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">Power Yoga & Mobility</h3>
+              <p class="program-desc">
+                Dynamic vinyasa flow, deep hip/spine decompressions, core activation, and flexibility protocols designed to bulletproof joints against heavy lifting injuries.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: Controlled</span>
+                <button class="learn-more-link" onclick="openProgramModal('yoga')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program 5 -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=80" 
+                   alt="Boxing and Combat Conditioning" />
+              <span class="program-badge">AGILITY</span>
+              <div class="program-icon-float"><i class="fa-solid fa-mitten"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">Boxing & Combat Drills</h3>
+              <p class="program-desc">
+                Heavy bag combinations, rapid footwork, defensive slip drills, and core rotational conditioning to build athletic reflexes and unrelenting cardiovascular grit.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: Extreme</span>
+                <button class="learn-more-link" onclick="openProgramModal('boxing')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Program 6 -->
+          <div class="program-card reveal-fade-up">
+            <div class="program-img-box">
+              <img class="program-img" 
+                   src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80" 
+                   alt="1-on-1 Personal Training Coaching" />
+              <span class="program-badge">PREMIUM</span>
+              <div class="program-icon-float"><i class="fa-solid fa-user-ninja"></i></div>
+            </div>
+            <div class="program-body">
+              <h3 class="program-title">1-on-1 Personal Coaching</h3>
+              <p class="program-desc">
+                Dedicated personal coach overseeing every rep, customized periodized lifting splits, body fat caliper tracking, and weekly nutrition accountability calls.
+              </p>
+              <div class="program-footer">
+                <span class="program-intensity"><i class="fa-solid fa-fire"></i> Intensity: Custom</span>
+                <button class="learn-more-link" onclick="openProgramModal('personal-training')">
+                  LEARN MORE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. TRAINERS SECTION
+         ========================================================================= -->
+    <section class="section-padding trainers-section" id="trainers">
+      <div class="bg-outline-text" style="top: 15%; left: -3%;">COACHES</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-award"></i>
+            <span>EXPERT LEADERSHIP</span>
+          </div>
+          <h2 class="section-title">MEET OUR <span class="text-neon">ELITE COACHES</span></h2>
+          <p class="section-description">
+            Passionate, certified, and uncompromising. Our coaches don't just instruct; they lead from the front, correcting your form and keeping your fire stoked.
+          </p>
+        </div>
+
+        <div class="trainers-grid">
+          <!-- Coach 1 -->
+          <div class="trainer-card reveal-fade-up">
+            <div class="trainer-img-wrap">
+              <img class="trainer-img" 
+                   src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=700&q=80" 
+                   alt="Coach Vikram Malik Head Strength Coach" />
+              <div class="trainer-gradient-overlay"></div>
+              <span class="trainer-exp-badge">10+ YRS EXPERIENCE</span>
+              <div class="trainer-info-box">
+                <h3 class="trainer-name">Vikram Malik</h3>
+                <div class="trainer-specialty">Head Strength & Hypertrophy</div>
+                <p class="trainer-bio">
+                  Former state powerlifter and CSCS-certified strength specialist. Expert in progressive overload mechanics and contest prep nutrition.
+                </p>
+                <div class="trainer-socials">
+                  <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://wa.me/919034158102" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 2 -->
+          <div class="trainer-card reveal-fade-up">
+            <div class="trainer-img-wrap">
+              <img class="trainer-img" 
+                   src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80" 
+                   alt="Coach Priya Sharma Group Aerobics Specialist" />
+              <div class="trainer-gradient-overlay"></div>
+              <span class="trainer-exp-badge">6+ YRS EXPERIENCE</span>
+              <div class="trainer-info-box">
+                <h3 class="trainer-name">Priya Sharma</h3>
+                <div class="trainer-specialty">Zumba & High-Intensity Cardio</div>
+                <p class="trainer-bio">
+                  Licensed Zumba instructor and group aerobics choreographer. Master of fat-shredding music routines and women's fitness conditioning.
+                </p>
+                <div class="trainer-socials">
+                  <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://wa.me/919034158102" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 3 -->
+          <div class="trainer-card reveal-fade-up">
+            <div class="trainer-img-wrap">
+              <img class="trainer-img" 
+                   src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80" 
+                   alt="Coach Rohit Dahiya Powerlifting Coach" />
+              <div class="trainer-gradient-overlay"></div>
+              <span class="trainer-exp-badge">8+ YRS EXPERIENCE</span>
+              <div class="trainer-info-box">
+                <h3 class="trainer-name">Rohit Dahiya</h3>
+                <div class="trainer-specialty">Powerlifting & Biomechanics</div>
+                <p class="trainer-bio">
+                  National powerlifting medalist with a 265 kg deadlift. Specializes in squat mechanics, shoulder stability, and injury rehabilitation.
+                </p>
+                <div class="trainer-socials">
+                  <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://wa.me/919034158102" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach 4 -->
+          <div class="trainer-card reveal-fade-up">
+            <div class="trainer-img-wrap">
+              <img class="trainer-img" 
+                   src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=700&q=80" 
+                   alt="Coach Amit Hooda Functional Coach" />
+              <div class="trainer-gradient-overlay"></div>
+              <span class="trainer-exp-badge">7+ YRS EXPERIENCE</span>
+              <div class="trainer-info-box">
+                <h3 class="trainer-name">Amit Hooda</h3>
+                <div class="trainer-specialty">CrossFit & Calisthenics</div>
+                <p class="trainer-bio">
+                  Functional training specialist and kettlebell coach. Dedicated to building explosive real-world power, endurance, and core mobility.
+                </p>
+                <div class="trainer-socials">
+                  <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="https://wa.me/919034158102" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. CLASS SCHEDULE SECTION
+         ========================================================================= -->
+    <section class="section-padding schedule-section" id="schedule">
+      <div class="bg-outline-text" style="top: 15%; right: -3%;">TIMETABLE</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>WEEKLY TIMETABLE</span>
+          </div>
+          <h2 class="section-title">TRAIN ON YOUR <span class="text-neon">SCHEDULE</span></h2>
+          <p class="section-description">
+            Morning power sessions to ignite your day and evening beat-blasting classes to de-stress. Click any day to view and reserve your spot.
+          </p>
+        </div>
+
+        <!-- Schedule Day Tabs -->
+        <div class="schedule-tabs-wrapper reveal-fade-up">
+          <button class="schedule-tab-btn active" data-day="mon">MONDAY</button>
+          <button class="schedule-tab-btn" data-day="tue">TUESDAY</button>
+          <button class="schedule-tab-btn" data-day="wed">WEDNESDAY</button>
+          <button class="schedule-tab-btn" data-day="thu">THURSDAY</button>
+          <button class="schedule-tab-btn" data-day="fri">FRIDAY</button>
+          <button class="schedule-tab-btn" data-day="sat">SATURDAY</button>
+          <button class="schedule-tab-btn" data-day="sun">SUNDAY</button>
+        </div>
+
+        <!-- Day Panels Container -->
+        <div id="schedulePanelsContainer">
+          <!-- Mon Panel -->
+          <div class="schedule-day-panel active" id="panel-mon">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:00 AM – 07:00 AM</span>
+                    <span class="tt-intensity intensity-high">High Intensity</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Chest & Tricep Hypertrophy</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Bench press progression, incline dumbbell flyes, cable dips.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Vikram</div>
+                      <div class="tt-trainer-role">Main Weight Floor</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Chest & Tricep Hypertrophy', 'Monday 6:00 AM', 'Coach Vikram')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 07:30 AM – 08:30 AM</span>
+                    <span class="tt-intensity intensity-med">Aerobic Burn</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Morning Zumba Beats</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Dynamic dance cardio to high-tempo Punjabi & electronic playlists.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Priya</div>
+                      <div class="tt-trainer-role">Turf & Aerobics Arena</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Morning Zumba Beats', 'Monday 7:30 AM', 'Coach Priya')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:30 PM – 07:30 PM</span>
+                    <span class="tt-intensity intensity-high">CrossFit</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Functional Turf Sled & Ropes</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Heavy prowler pushes, 1.5-inch battle ropes, box jumps.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Amit</div>
+                      <div class="tt-trainer-role">Green Turf Area</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Functional Turf Sled & Ropes', 'Monday 6:30 PM', 'Coach Amit')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tue Panel -->
+          <div class="schedule-day-panel" id="panel-tue">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:00 AM – 07:00 AM</span>
+                    <span class="tt-intensity intensity-high">Powerlifting</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Back Thickness & Deadlifts</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Conventional deadlifts, barbell rows, heavy lat pulldowns.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Rohit</div>
+                      <div class="tt-trainer-role">Platform 1 & 2</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Back Thickness & Deadlifts', 'Tuesday 6:00 AM', 'Coach Rohit')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:00 PM – 07:00 PM</span>
+                    <span class="tt-intensity intensity-high">Combat HIIT</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Boxing Bag Conditioning</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Jab-cross-hook rounds, rotational medicine ball slams.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Amit</div>
+                      <div class="tt-trainer-role">Combat Zone</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Boxing Bag Conditioning', 'Tuesday 6:00 PM', 'Coach Amit')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 07:30 PM – 08:30 PM</span>
+                    <span class="tt-intensity intensity-med">Zumba Dance</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Evening Aerobics Jam</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">High calorie burn cardio workout suitable for all fitness levels.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Priya</div>
+                      <div class="tt-trainer-role">Turf Arena</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Evening Aerobics Jam', 'Tuesday 7:30 PM', 'Coach Priya')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wed Panel -->
+          <div class="schedule-day-panel" id="panel-wed">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:00 AM – 07:00 AM</span>
+                    <span class="tt-intensity intensity-high">Leg Day</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Heavy Squat & Quad Blitz</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Barbell back squats, 45-degree leg press, Romanian deadlifts.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Rohit</div>
+                      <div class="tt-trainer-role">Squat Racks</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Heavy Squat & Quad Blitz', 'Wednesday 6:00 AM', 'Coach Rohit')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 07:00 PM – 08:00 PM</span>
+                    <span class="tt-intensity intensity-med">Mobility</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Spine Decompression & Core</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Vinyasa flow, hip openers, hanging leg raises, plank matrix.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Priya</div>
+                      <div class="tt-trainer-role">Studio Floor</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Spine Decompression & Core', 'Wednesday 7:00 PM', 'Coach Priya')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thu Panel -->
+          <div class="schedule-day-panel" id="panel-thu">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:30 AM – 07:30 AM</span>
+                    <span class="tt-intensity intensity-high">Hypertrophy</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Boulder Shoulders & Traps</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Overhead barbell press, dumbbell lateral raises, heavy shrugs.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Vikram</div>
+                      <div class="tt-trainer-role">Weight Room</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Boulder Shoulders & Traps', 'Thursday 6:30 AM', 'Coach Vikram')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:30 PM – 07:30 PM</span>
+                    <span class="tt-intensity intensity-high">CrossFit</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Kettlebell & Calisthenics</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Pull-up ladders, ring dips, Russian kettlebell swings.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Amit</div>
+                      <div class="tt-trainer-role">Turf Arena</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Kettlebell & Calisthenics', 'Thursday 6:30 PM', 'Coach Amit')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fri Panel -->
+          <div class="schedule-day-panel" id="panel-fri">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 06:00 AM – 07:00 AM</span>
+                    <span class="tt-intensity intensity-high">Arms Overload</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Biceps & Triceps Armageddon</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Preacher curls, skull crushers, 21s method, rope pushdowns.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Vikram</div>
+                      <div class="tt-trainer-role">Dumbbell Section</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Biceps & Triceps Armageddon', 'Friday 6:00 AM', 'Coach Vikram')">BOOK CLASS</button>
+                </div>
+              </div>
+
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 07:00 PM – 08:00 PM</span>
+                    <span class="tt-intensity intensity-med">Zumba Party</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Friday Night Cardio Party</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Celebrate the weekend with high-voltage group fitness and calories torched.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Priya</div>
+                      <div class="tt-trainer-role">Studio Arena</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Friday Night Cardio Party', 'Friday 7:00 PM', 'Coach Priya')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sat Panel -->
+          <div class="schedule-day-panel" id="panel-sat">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 07:00 AM – 08:30 AM</span>
+                    <span class="tt-intensity intensity-high">Full Body</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Saturday Beast Circuit</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Giant sets across 8 stations combining strength, sleds, and sprints.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Coach Amit & Rohit</div>
+                      <div class="tt-trainer-role">Entire Facility</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Saturday Beast Circuit', 'Saturday 7:00 AM', 'Coaches Amit & Rohit')">BOOK CLASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sun Panel -->
+          <div class="schedule-day-panel" id="panel-sun">
+            <div class="timetable-grid">
+              <div class="timetable-card">
+                <div>
+                  <div class="tt-header">
+                    <span class="tt-time-badge"><i class="fa-regular fa-clock"></i> 08:00 AM – 10:00 AM</span>
+                    <span class="tt-intensity intensity-med">Recovery</span>
+                  </div>
+                  <h3 class="tt-title" style="margin-top:14px;">Sunday Mobility & Free Lift</h3>
+                  <p style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">Gym open 7:00 AM - 1:00 PM for open floor workout and active foam-roller recovery.</p>
+                </div>
+                <div class="tt-trainer-row">
+                  <div class="tt-trainer-info">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=100&q=80" alt="Trainer" class="tt-trainer-avatar">
+                    <div>
+                      <div class="tt-trainer-name">Duty Coach</div>
+                      <div class="tt-trainer-role">Open Floor</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-sm" onclick="bookClass('Sunday Open Floor', 'Sunday Morning', 'Duty Coach')">OPEN PASS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. BMI & 1RM STRENGTH CALCULATOR
+         ========================================================================= -->
+    <section class="section-padding bmi-section" id="bmi">
+      <div class="bg-outline-text" style="top: 15%; left: -4%;">METRICS</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-calculator"></i>
+            <span>FITNESS DIAGNOSTICS</span>
+          </div>
+          <h2 class="section-title">CALCULATE YOUR <span class="text-neon">STATS</span></h2>
+          <p class="section-description">
+            Assess your Body Mass Index (BMI) or determine your 1-Rep Max (1RM) lifting strength percentages for optimal progression.
+          </p>
+        </div>
+
+        <div class="calc-module-wrapper reveal-fade-up">
+          <!-- Top Tab Switches -->
+          <div class="calc-nav-tabs">
+            <button class="calc-tab-toggle active" id="tabBmiToggle" onclick="switchCalcTab('bmi')">
+              <i class="fa-solid fa-weight-scale"></i>
+              <span>BMI HEALTH CALCULATOR</span>
+            </button>
+            <button class="calc-tab-toggle" id="tabOnermToggle" onclick="switchCalcTab('onerm')">
+              <i class="fa-solid fa-dumbbell"></i>
+              <span>1-REP MAX (1RM) STRENGTH</span>
+            </button>
+          </div>
+
+          <!-- BMI Panel -->
+          <div class="calc-panel active" id="panelBmi">
+            <div class="calc-two-col">
+              <!-- Form Column -->
+              <div class="calc-form-column">
+                <div class="unit-switch-row">
+                  <button type="button" class="unit-pill-btn active" id="unitMetricBtn" onclick="setBmiUnit('metric')">METRIC (CM / KG)</button>
+                  <button type="button" class="unit-pill-btn" id="unitImperialBtn" onclick="setBmiUnit('imperial')">IMPERIAL (FT / LBS)</button>
+                </div>
+
+                <div class="calc-grid-2">
+                  <div class="calc-form-group">
+                    <label class="calc-label" for="bmiAge">Age</label>
+                    <div class="calc-input-wrap">
+                      <input type="number" id="bmiAge" class="calc-input" value="24" min="10" max="100">
+                      <span class="calc-input-suffix">yrs</span>
+                    </div>
+                  </div>
+                  <div class="calc-form-group">
+                    <label class="calc-label" for="bmiGender">Gender</label>
+                    <select id="bmiGender" class="calc-input">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="calc-form-group">
+                  <label class="calc-label" for="bmiHeight" id="bmiHeightLabel">Height (cm)</label>
+                  <div class="calc-input-wrap">
+                    <input type="number" id="bmiHeight" class="calc-input" value="175" min="50" max="250">
+                    <span class="calc-input-suffix" id="bmiHeightSuffix">cm</span>
+                  </div>
+                </div>
+
+                <div class="calc-form-group">
+                  <label class="calc-label" for="bmiWeight" id="bmiWeightLabel">Weight (kg)</label>
+                  <div class="calc-input-wrap">
+                    <input type="number" id="bmiWeight" class="calc-input" value="70" min="20" max="300">
+                    <span class="calc-input-suffix" id="bmiWeightSuffix">kg</span>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="calculateBMI()">
+                  <i class="fa-solid fa-calculator"></i> CALCULATE BMI
+                </button>
+              </div>
+
+              <!-- Result Display Column -->
+              <div class="calc-result-display">
+                <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:10px;">
+                  YOUR CALCULATED BMI
+                </div>
+                <div class="bmi-score-number" id="bmiResultScore">22.9</div>
+                <div class="bmi-category-badge" id="bmiCategoryBadge" style="background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid #2ecc71;">
+                  NORMAL WEIGHT
+                </div>
+
+                <!-- Animated Needle Gauge -->
+                <div class="bmi-gauge-bar">
+                  <div class="bmi-gauge-needle" id="bmiGaugeNeedle" style="left: 45%;"></div>
+                </div>
+                <div class="bmi-legend-labels">
+                  <span>Under &lt;18.5</span>
+                  <span>Normal 18.5-24.9</span>
+                  <span>Over 25-29.9</span>
+                  <span>Obese 30+</span>
+                </div>
+
+                <!-- Suggested Program Box -->
+                <div class="bmi-recommendation-box" id="bmiRecommendationBox">
+                  <h5><i class="fa-solid fa-bullseye"></i> RECOMMENDED PATH:</h5>
+                  <p id="bmiRecText">Your BMI is in the healthy range! To sculpt lean muscle mass and improve power, we recommend our <strong>Weight Training & Hypertrophy Program</strong> combined with regular turf conditioning.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1RM Strength Panel -->
+          <div class="calc-panel" id="panelOnerm">
+            <div class="calc-two-col">
+              <!-- 1RM Inputs -->
+              <div>
+                <div class="calc-form-group">
+                  <label class="calc-label" for="onermExercise">Lift Exercise</label>
+                  <select id="onermExercise" class="calc-input">
+                    <option value="bench">Barbell Bench Press</option>
+                    <option value="squat">Barbell Back Squat</option>
+                    <option value="deadlift">Conventional Deadlift</option>
+                    <option value="overhead">Overhead Shoulder Press</option>
+                  </select>
+                </div>
+                <div class="calc-form-group">
+                  <label class="calc-label" for="onermWeight">Weight Lifted (kg)</label>
+                  <div class="calc-input-wrap">
+                    <input type="number" id="onermWeight" class="calc-input" value="80" min="1" max="500">
+                    <span class="calc-input-suffix">kg</span>
+                  </div>
+                </div>
+                <div class="calc-form-group">
+                  <label class="calc-label" for="onermReps">Repetitions Completed (1 to 12)</label>
+                  <div class="calc-input-wrap">
+                    <input type="number" id="onermReps" class="calc-input" value="6" min="1" max="12">
+                    <span class="calc-input-suffix">reps</span>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="calculate1RM()">
+                  <i class="fa-solid fa-dumbbell"></i> CALCULATE 1RM
+                </button>
+              </div>
+
+              <!-- 1RM Table Display -->
+              <div class="calc-result-display">
+                <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px;">
+                  ESTIMATED 1-REP MAX
+                </div>
+                <div class="bmi-score-number" id="onermResultNumber" style="color:var(--primary);">93.3 <span style="font-size:2rem; font-family:var(--font-heading);">KG</span></div>
+                
+                <table class="onerm-table">
+                  <thead>
+                    <tr>
+                      <th>Percentage</th>
+                      <th>Weight</th>
+                      <th>Rep Range Focus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>95%</td>
+                      <td id="weight95">88.6 kg</td>
+                      <td>1 - 2 Reps (Max Effort)</td>
+                    </tr>
+                    <tr>
+                      <td>85%</td>
+                      <td id="weight85">79.3 kg</td>
+                      <td>4 - 6 Reps (Strength)</td>
+                    </tr>
+                    <tr>
+                      <td>75%</td>
+                      <td id="weight75">70.0 kg</td>
+                      <td>8 - 10 Reps (Hypertrophy)</td>
+                    </tr>
+                    <tr>
+                      <td>65%</td>
+                      <td id="weight65">60.6 kg</td>
+                      <td>12 - 15 Reps (Endurance)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         9. PRICING SECTION
+         ========================================================================= -->
+    <section class="section-padding pricing-section" id="pricing">
+      <div class="bg-outline-text" style="top: 15%; right: -5%;">MEMBERSHIP</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-tag"></i>
+            <span>AFFORDABLE IRON</span>
+          </div>
+          <h2 class="section-title">TRANSPARENT <span class="text-neon">PLANS</span></h2>
+          <p class="section-description">
+            No hidden admission fees. Sonipat's most honest, premium gym pricing starting at just <strong>₹1,500 per month</strong>.
+          </p>
+        </div>
+
+        <!-- Monthly / Annual Toggle -->
+        <div class="pricing-toggle-wrap reveal-fade-up">
+          <span class="pricing-cycle-label active" id="labelMonthly" onclick="setBilling('monthly')">MONTHLY</span>
+          <label class="price-switch" aria-label="Toggle Billing Cycle">
+            <input type="checkbox" id="pricingToggleSwitch" onchange="toggleBillingCycle(this)">
+            <span class="price-slider"></span>
+          </label>
+          <span class="pricing-cycle-label" id="labelYearly" onclick="setBilling('yearly')">YEARLY</span>
+          <span class="discount-chip">SAVE 25%</span>
+        </div>
+
+        <!-- 3 Tier Pricing Cards -->
+        <div class="pricing-grid">
+          <!-- Tier 1: Basic Plan (₹1,500/month as requested) -->
+          <div class="pricing-card reveal-fade-up">
+            <h3 class="plan-tier-name">BASIC PLAN</h3>
+            <p class="plan-tagline">Ideal for self-driven lifters looking for uncompromised equipment access.</p>
+            <div class="price-figure-wrap">
+              <span class="currency-symbol">₹</span>
+              <span class="price-amount" id="priceBasic">1,500</span>
+              <span class="billing-period" id="periodBasic">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Unlimited Gym Floor & Free Weights</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Cardio Zone & Treadmills Access</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Locker Facility & Showers</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> General Floor Trainer Guidance</li>
+              <li class="plan-feature-item disabled"><i class="fa-solid fa-xmark"></i> Group Zumba & Aerobics Classes</li>
+              <li class="plan-feature-item disabled"><i class="fa-solid fa-xmark"></i> Dedicated 1-on-1 Personal Trainer</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openCheckoutModal('Basic Plan', 1500)">
+              JOIN BASIC PLAN
+            </button>
+          </div>
+
+          <!-- Tier 2: Pro Plan (Most Popular with Glow) -->
+          <div class="pricing-card featured reveal-fade-up">
+            <div class="popular-ribbon">MOST POPULAR</div>
+            <h3 class="plan-tier-name" style="color:var(--primary);">PRO MUSCLE</h3>
+            <p class="plan-tagline">Complete all-in-one pass including group classes and nutrition guidance.</p>
+            <div class="price-figure-wrap">
+              <span class="currency-symbol">₹</span>
+              <span class="price-amount" id="pricePro">2,500</span>
+              <span class="billing-period" id="periodPro">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> <strong>All Basic Plan Benefits</strong></li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Unlimited Zumba & Group Aerobics</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Functional Turf Track Access</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Bi-Weekly Body Composition & BMI Scan</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Personalized Diet & Meal Protocol</li>
+              <li class="plan-feature-item disabled"><i class="fa-solid fa-xmark"></i> Daily 1-on-1 Personal Training</li>
+            </ul>
+            <button class="btn btn-primary" onclick="openCheckoutModal('Pro Muscle Plan', 2500)">
+              <i class="fa-solid fa-bolt"></i> GET PRO ACCESS
+            </button>
+          </div>
+
+          <!-- Tier 3: Elite VIP Plan -->
+          <div class="pricing-card reveal-fade-up">
+            <h3 class="plan-tier-name">ELITE VIP</h3>
+            <p class="plan-tagline">For dedicated athletes seeking elite 1-on-1 coaching and custom protocols.</p>
+            <div class="price-figure-wrap">
+              <span class="currency-symbol">₹</span>
+              <span class="price-amount" id="priceElite">4,000</span>
+              <span class="billing-period" id="periodElite">/ month</span>
+            </div>
+            <ul class="plan-features-list">
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> <strong>All Pro Muscle Features</strong></li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> 12 Dedicated 1-on-1 Personal Coaching Sessions</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Custom Supplement & Recovery Protocol</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Dedicated Reserved VIP Locker</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> Free Guest Passes (2 per month)</li>
+              <li class="plan-feature-item"><i class="fa-solid fa-check"></i> 24/7 WhatsApp Trainer Hotline</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openCheckoutModal('Elite VIP Plan', 4000)">
+              JOIN ELITE VIP
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         10. TRANSFORMATION GALLERY & VERIFIED GOOGLE MAPS PHOTOS
+         ========================================================================= -->
+    <section class="section-padding gallery-section" id="gallery">
+      <div class="bg-outline-text" style="top: 15%; left: -4%;">GALLERY</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-camera"></i>
+            <span>REAL ATHLETES & FACILITY</span>
+          </div>
+          <h2 class="section-title">THE TRANSFORMATION <span class="text-neon">VAULT</span></h2>
+          <p class="section-description">
+            Explore authentic photos from our Sector 15 facility on Google Maps, real client progress, and high-intensity workout moments.
+          </p>
+        </div>
+
+        <!-- Before / After Draggable Split Comparison Slider -->
+        <div class="before-after-container reveal-fade-up">
+          <div class="ba-header">
+            <h3>MEMBER TRANSFORMATION SPOTLIGHT</h3>
+            <p>Drag the slider to reveal the 16-week transformation by Coach Vikram</p>
+          </div>
+          <div class="ba-slider-stage" id="baSliderStage">
+            <!-- After Photo -->
+            <img class="ba-image ba-image-after" 
+                 src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=80" 
+                 alt="After Transformation Muscle Hut" />
+            
+            <!-- Before Photo -->
+            <img class="ba-image ba-image-before" id="baBeforeImg" 
+                 src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=40&sat=-80" 
+                 alt="Before Transformation Muscle Hut" />
+            
+            <span class="ba-label ba-label-before">WEEK 1 (BEFORE)</span>
+            <span class="ba-label ba-label-after">WEEK 16 (AFTER: -14KG FAT, +4KG MUSCLE)</span>
+
+            <!-- Divider Line with Drag Knob -->
+            <div class="ba-divider-handle" id="baDividerHandle">
+              <div class="ba-handle-knob">
+                <i class="fa-solid fa-arrows-left-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Filter Tabs -->
+        <div class="gallery-filter-tabs reveal-fade-up">
+          <button class="gallery-tab-btn active" data-filter="all">ALL PHOTOS</button>
+          <button class="gallery-tab-btn" data-filter="maps">VERIFIED GOOGLE MAPS PHOTOS</button>
+          <button class="gallery-tab-btn" data-filter="workouts">WORKOUTS & LIFTING</button>
+          <button class="gallery-tab-btn" data-filter="aerobics">AEROBICS & TURF</button>
+          <button class="gallery-tab-btn" data-filter="equipment">EQUIPMENT</button>
+        </div>
+
+        <!-- Filterable Grid -->
+        <div class="gallery-masonry-grid" id="galleryGrid">
+          <!-- Item 1: Real Gym Interior (Google Maps Photo) -->
+          <div class="gallery-item" data-category="maps equipment" 
+               onclick="openLightbox('images/interior_main.jpg', 'The Muscle Hut Gym - Wide View Interior with Bio-mechanical Machines & Green Turf (Google Maps Verified)', 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no')">
+            <img class="gallery-item-img" 
+                 src="images/interior_main.jpg" 
+                 alt="The Muscle Hut Interior Wide View"
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no';" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">GOOGLE MAPS VERIFIED</span>
+              <div class="gallery-item-caption">Main Gym Floor & Heavy Pin-Loaded Machines</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 2: Real Group Aerobics & Zumba Class (Google Maps Photo) -->
+          <div class="gallery-item" data-category="maps aerobics" 
+               onclick="openLightbox('images/group_fitness.jpg', 'Live Group Aerobics & Zumba Session in Action at The Muscle Hut Sector 15 (Google Maps Verified)', 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tth984a84hqELOhPd4_bw0xtOHBeK7R_BxIwGtQBqKR3YAPbwsUydVeIpfZMGL5dJQjXiRvZcl6fA7tHPOiwiYy2MQk3il0c4ijlxugaI_bY73N0rvk1GmmXSbA6bxpdmNplhn=s1600')">
+            <img class="gallery-item-img" 
+                 src="images/group_fitness.jpg" 
+                 alt="Live Group Aerobics Class at The Muscle Hut"
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tth984a84hqELOhPd4_bw0xtOHBeK7R_BxIwGtQBqKR3YAPbwsUydVeIpfZMGL5dJQjXiRvZcl6fA7tHPOiwiYy2MQk3il0c4ijlxugaI_bY73N0rvk1GmmXSbA6bxpdmNplhn=s1600';" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">LIVE MEMBER CLASS</span>
+              <div class="gallery-item-caption">Energetic Group Aerobics & Zumba Beat Session</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 3: Real Athlete Pushup on Turf Floor (Google Maps Photo) -->
+          <div class="gallery-item" data-category="maps workouts" 
+               onclick="openLightbox('images/workout_pushup.jpg', 'Member Decline Push-up Core Training on Rubber Matted Floor (Google Maps Verified)', 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TiBSgzefhumxtlZkCf0uKCI1eF-mS0ozj89uIALmURDm8eDryJPTTPqOxPSuGI1Qk0_cy3AcLUjndWpJrZDPpI6n5TJuqK0V3LCxT8rRWf7hN-x6yLvG-TK4i2_LdMu0o7DPOi1w=s1600')">
+            <img class="gallery-item-img" 
+                 src="images/workout_pushup.jpg" 
+                 alt="Decline Push-up Workout at The Muscle Hut"
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TiBSgzefhumxtlZkCf0uKCI1eF-mS0ozj89uIALmURDm8eDryJPTTPqOxPSuGI1Qk0_cy3AcLUjndWpJrZDPpI6n5TJuqK0V3LCxT8rRWf7hN-x6yLvG-TK4i2_LdMu0o7DPOi1w=s1600';" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">CALISTHENICS</span>
+              <div class="gallery-item-caption">Decline Core Push-ups on Strength Floor</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 4: Real Trainer & Vibration Recovery Area (Google Maps Photo) -->
+          <div class="gallery-item" data-category="maps equipment" 
+               onclick="openLightbox('images/trainer_floor.jpg', 'Vibration Plate, Swiss Balls & Turf Conditioning Floor (Google Maps Verified)', 'https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SYAeT4uFXmUgEiaI80RWsXJ7sEN4oIJ4GxiwPMNe8o_1JBLrGpdiafTQjTR3oxVNeTYi9a93SIy09ChQ8Ye7gyLLZgHdatgqIs70drJGOhdyFj4q2tcn1zGO15JAjcFhIASrtjfA=s1600')">
+            <img class="gallery-item-img" 
+                 src="images/trainer_floor.jpg" 
+                 alt="The Muscle Hut Workout Floor and Trainer"
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SYAeT4uFXmUgEiaI80RWsXJ7sEN4oIJ4GxiwPMNe8o_1JBLrGpdiafTQjTR3oxVNeTYi9a93SIy09ChQ8Ye7gyLLZgHdatgqIs70drJGOhdyFj4q2tcn1zGO15JAjcFhIASrtjfA=s1600';" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">RECOVERY & BALANCE</span>
+              <div class="gallery-item-caption">Functional Turf Zone & Vibration Plate Station</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 5: Heavy Deadlifts (Unsplash) -->
+          <div class="gallery-item" data-category="workouts" 
+               onclick="openLightbox('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80', 'Heavy Barbell Deadlift Pulls on Olympic Platform')">
+            <img class="gallery-item-img" 
+                 src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" 
+                 alt="Deadlift Platform Workout" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">POWERLIFTING</span>
+              <div class="gallery-item-caption">Olympic Deadlifts & Barbell Overload</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 6: Dumbbell Hypertrophy (Unsplash) -->
+          <div class="gallery-item" data-category="workouts equipment" 
+               onclick="openLightbox('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80', 'Heavy Incline Dumbbell Bench Press Training')">
+            <img class="gallery-item-img" 
+                 src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" 
+                 alt="Dumbbell Training" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">UPPER BODY</span>
+              <div class="gallery-item-caption">Heavy Incline Dumbbell Press Sessions</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 7: Battle Ropes on Turf (Unsplash) -->
+          <div class="gallery-item" data-category="aerobics workouts" 
+               onclick="openLightbox('https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=1200&q=80', 'Explosive Battle Rope Intervals for Cardiovascular Endurance')">
+            <img class="gallery-item-img" 
+                 src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?auto=format&fit=crop&w=600&q=80" 
+                 alt="Battle Ropes on Turf" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">TURF HIIT</span>
+              <div class="gallery-item-caption">High Energy Turf Ropes Conditioning</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+
+          <!-- Item 8: Combat Boxing (Unsplash) -->
+          <div class="gallery-item" data-category="workouts" 
+               onclick="openLightbox('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=80', 'Heavy Bag Boxing Striking Drills')">
+            <img class="gallery-item-img" 
+                 src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" 
+                 alt="Heavy Bag Boxing Striking" />
+            <div class="gallery-hover-overlay">
+              <span class="gallery-item-badge">BOXING</span>
+              <div class="gallery-item-caption">Combat Conditioning & Heavy Bags</div>
+            </div>
+            <div class="gallery-zoom-icon"><i class="fa-solid fa-expand"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image Preview">
+      <div class="lightbox-content-box">
+        <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close Preview">&times;</button>
+        <button class="lightbox-nav-btn lightbox-prev" onclick="prevLightbox()"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lightbox-nav-btn lightbox-next" onclick="nextLightbox()"><i class="fa-solid fa-chevron-right"></i></button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged view">
+        <div class="lightbox-caption-text" id="lightboxCaption"></div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         11. TESTIMONIALS SECTION
+         ========================================================================= -->
+    <section class="section-padding testimonials-section" id="testimonials">
+      <div class="bg-outline-text" style="top: 20%; right: -5%;">REVIEWS</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-comments"></i>
+            <span>COMMUNITY VOICES</span>
+          </div>
+          <h2 class="section-title">WHAT OUR <span class="text-neon">LIFTERS SAY</span></h2>
+          <p class="section-description">
+            Real feedback from Sonipat residents who train every day at The Muscle Hut in Sector 15.
+          </p>
+        </div>
+
+        <div class="testimonial-carousel-container reveal-fade-up">
+          <div class="testimonial-viewport" id="testimonialViewport">
+            <div class="testimonial-track" id="testimonialTrack">
+              <!-- Slide 1 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                  "I had tried two other gyms in Sonipat, but none had the hardcore vibe and proper biomechanics that The Muscle Hut offers. Coach Vikram designed my meal plan, and I lost 14 kg of pure fat in 4 months. Unbeatable quality for ₹1,500/month!"
+                </p>
+                <div class="testimonial-author-row">
+                  <div class="author-profile">
+                    <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Aman Saini">
+                    <div class="author-details">
+                      <h4>Aman Saini</h4>
+                      <p>Sector 15, Sonipat • Member for 10 Months</p>
+                    </div>
+                  </div>
+                  <div class="author-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                  "The group aerobics and Zumba sessions with Coach Priya are the highlight of my evenings! The turf area is always clean, the music keeps your energy sky-high, and the coaches treat everyone like family. Highly recommend to all ladies in Sonipat."
+                </p>
+                <div class="testimonial-author-row">
+                  <div class="author-profile">
+                    <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Ritu Hooda">
+                    <div class="author-details">
+                      <h4>Ritu Hooda</h4>
+                      <p>Rajiv Gandhi Colony • Member for 6 Months</p>
+                    </div>
+                  </div>
+                  <div class="author-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                  "Legit powerlifting racks, heavy iron plates, and trainers who actually check your squat depth and spine alignment. No show-off nonsense, just pure dedication and results. The 5:30 AM morning batch is the best way to start the day."
+                </p>
+                <div class="testimonial-author-row">
+                  <div class="author-profile">
+                    <img class="author-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Deepak Malik">
+                    <div class="author-details">
+                      <h4>Deepak Malik</h4>
+                      <p>Model Town, Sonipat • Member for 1.5 Years</p>
+                    </div>
+                  </div>
+                  <div class="author-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="testimonial-dots" id="testimonialDots">
+            <span class="t-dot active" onclick="goToTestimonial(0)"></span>
+            <span class="t-dot" onclick="goToTestimonial(1)"></span>
+            <span class="t-dot" onclick="goToTestimonial(2)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         12. FREE TRIAL & CONTACT SECTION
+         ========================================================================= -->
+    <section class="section-padding contact-section" id="contact">
+      <div class="bg-outline-text" style="top: 20%; left: -3%;">CONTACT</div>
+
+      <div class="container">
+        <div class="section-header reveal-fade-up">
+          <div class="section-subtitle-badge">
+            <i class="fa-solid fa-id-card"></i>
+            <span>START YOUR JOURNEY</span>
+          </div>
+          <h2 class="section-title">CLAIM YOUR <span class="text-neon">FREE 1-DAY PASS</span></h2>
+          <p class="section-description">
+            Experience the atmosphere, test our machines, and chat with our coaches for free. Fill out the form or drop by our Sector 15 gym.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info & Map Card -->
+          <div class="contact-info-col reveal-fade-up">
+            <div class="contact-card-box">
+              <h3 style="font-family:var(--font-display); font-size:1.8rem; letter-spacing:1px; margin-bottom:20px; color:var(--text-white);">
+                THE MUSCLE HUT GYM
+              </h3>
+
+              <div class="contact-method-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="contact-method-text">
+                  <h5>Location Address</h5>
+                  <p>1525, Sector 15 Road, Rajiv Gandhi Colony, Sonipat, Haryana 131001 (Near Raju Dairy)</p>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                <div class="contact-method-text">
+                  <h5>Direct Phone / Calling</h5>
+                  <a href="tel:+919034158102">+91 90341 58102</a>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <div class="contact-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="contact-method-text">
+                  <h5>WhatsApp Chat Support</h5>
+                  <a href="https://wa.me/919034158102?text=Hi%20Muscle%20Hut%20Gym%2C%20I%20am%20interested%20in%20a%20membership%20or%20free%20trial!" target="_blank" rel="noopener">
+                    +91 90341 58102 (Instant Reply)
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <div class="contact-icon-box"><i class="fa-solid fa-clock"></i></div>
+                <div class="contact-method-text">
+                  <h5>Gym Operating Hours</h5>
+                  <p>Monday – Saturday: <strong>5:30 AM – 10:00 PM</strong><br>Sunday: <strong>7:00 AM – 1:00 PM</strong></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Google Map Embed -->
+            <div class="map-embed-wrapper">
+              <iframe 
+                src="https://maps.google.com/maps?q=28.998406,77.0357731&hl=en&z=17&output=embed" 
+                title="The Muscle Hut Gym Google Maps Location"
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Free Trial Validated Form -->
+          <div class="trial-form-card reveal-fade-up">
+            <h3 style="font-family:var(--font-display); font-size:2rem; letter-spacing:1px; margin-bottom:8px; color:var(--text-white);">
+              BOOK YOUR FREE WORKOUT PASS
+            </h3>
+            <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:26px;">
+              Zero commitment. We will send you an instant SMS & WhatsApp confirmation pass.
+            </p>
+
+            <form id="freeTrialForm" novalidate onsubmit="handleTrialSubmit(event)">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="trialName">Full Name *</label>
+                  <input type="text" id="trialName" class="form-control" placeholder="e.g. Sahil Sharma" required>
+                  <div class="form-error-msg" id="nameError">Please enter your full name (at least 2 letters).</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="trialPhone">Phone Number *</label>
+                  <input type="tel" id="trialPhone" class="form-control" placeholder="e.g. 9812345678" required>
+                  <div class="form-error-msg" id="phoneError">Please enter a valid 10-digit mobile number.</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="trialEmail">Email Address (Optional)</label>
+                <input type="email" id="trialEmail" class="form-control" placeholder="sahil@example.com">
+                <div class="form-error-msg" id="emailError">Please enter a valid email address.</div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="trialGoal">Primary Fitness Goal *</label>
+                  <select id="trialGoal" class="form-control" required>
+                    <option value="">Select your main goal</option>
+                    <option value="Fat Loss & Toning">Fat Loss & Conditioning</option>
+                    <option value="Muscle Building / Hypertrophy">Muscle Gain & Hypertrophy</option>
+                    <option value="Powerlifting & Strength">Raw Strength & Powerlifting</option>
+                    <option value="Zumba & Aerobics">Group Aerobics & Zumba</option>
+                    <option value="General Health">General Physical Fitness</option>
+                  </select>
+                  <div class="form-error-msg" id="goalError">Please pick a primary goal.</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="trialSlot">Preferred Time Slot *</label>
+                  <select id="trialSlot" class="form-control" required>
+                    <option value="Morning (5:30 AM - 9:00 AM)">Morning (5:30 AM - 9:00 AM)</option>
+                    <option value="Mid-day (9:00 AM - 4:00 PM)">Mid-day (9:00 AM - 4:00 PM)</option>
+                    <option value="Evening (4:00 PM - 10:00 PM)">Evening (4:00 PM - 10:00 PM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="trialMessage">Special Request or Questions</label>
+                <textarea id="trialMessage" class="form-control" rows="3" placeholder="Tell us if you have injuries, previous gym experience, or specific questions..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:10px;">
+                <i class="fa-solid fa-ticket"></i> CONFIRM FREE 1-DAY PASS
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       13. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div>
+          <div class="navbar-brand" style="margin-bottom:12px;">
+            <div class="brand-icon-box"><i class="fa-solid fa-dumbbell"></i></div>
+            <div class="brand-text-col">
+              <div class="brand-main-title">MUSCLE <span>HUT</span></div>
+              <div class="brand-sub-location">SECTOR 15 • SONIPAT</div>
+            </div>
+          </div>
+          <p class="footer-col-desc">
+            Sonipat's premier hardcore gym built for real gains. High-grade bio-mechanical machines, certified coaches, functional turf conditioning, and high-energy aerobics.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/919034158102" target="_blank" rel="noopener" class="social-icon-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">NAVIGATION</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li><a href="#about"><i class="fa-solid fa-angle-right"></i> About Gym</a></li>
+            <li><a href="#programs"><i class="fa-solid fa-angle-right"></i> Workout Programs</a></li>
+            <li><a href="#schedule"><i class="fa-solid fa-angle-right"></i> Class Timetable</a></li>
+            <li><a href="#pricing"><i class="fa-solid fa-angle-right"></i> Pricing (₹1,500/Mo)</a></li>
+            <li><a href="#gallery"><i class="fa-solid fa-angle-right"></i> Photo Gallery</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Programs & Amenities -->
+        <div>
+          <h4 class="footer-col-title">AMENITIES</h4>
+          <ul class="footer-links-list">
+            <li><a href="#programs"><i class="fa-solid fa-angle-right"></i> Heavy Weight Training</a></li>
+            <li><a href="#programs"><i class="fa-solid fa-angle-right"></i> Green Turf Functional Zone</a></li>
+            <li><a href="#programs"><i class="fa-solid fa-angle-right"></i> Zumba & Aerobics Arena</a></li>
+            <li><a href="#programs"><i class="fa-solid fa-angle-right"></i> 1-on-1 Personal Coaching</a></li>
+            <li><a href="#bmi"><i class="fa-solid fa-angle-right"></i> BMI & 1RM Calculator</a></li>
+            <li><a href="#contact"><i class="fa-solid fa-angle-right"></i> Free 1-Day Trial</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+          <h4 class="footer-col-title">WORKOUT TIPS & NEWS</h4>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">
+            Subscribe to our weekly Sonipat lifting newsletter for workout splits, high-protein vegetarian meal ideas, and gym events.
+          </p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" id="newsEmail" class="newsletter-input" placeholder="Your email address..." required>
+            <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+          <div id="newsSuccess" style="color:var(--primary); font-size:0.8rem; margin-top:8px; display:none;">
+            ✓ Subscribed to The Muscle Hut updates!
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom-row">
+        <div>
+          © 2026 <strong>The Muscle Hut Gym</strong>. All rights reserved. 1525, Sector 15 Road, Rajiv Gandhi Colony, Sonipat, Haryana 131001.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <a href="#hero" style="color:var(--text-dim); text-decoration:none;">Privacy Policy</a>
+          <span>•</span>
+          <a href="#hero" style="color:var(--text-dim); text-decoration:none;">Gym Rules</a>
+          <span>•</span>
+          <a href="#hero" style="color:var(--text-dim); text-decoration:none;">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       FLOATING ACTION BUTTONS
+       ========================================================================= -->
+  <div class="floating-actions-container">
+    <!-- WhatsApp Direct Chat Button -->
+    <a href="https://wa.me/919034158102?text=Hi%20Muscle%20Hut%20Gym%2C%20I%20want%20to%20inquire%20about%20gym%20membership%20and%20the%20free%201-day%20trial!" 
+       class="float-whatsapp-btn" 
+       target="_blank" 
+       rel="noopener" 
+       title="Chat with The Muscle Hut on WhatsApp"
+       aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top-btn" id="backToTopBtn" onclick="scrollToTop()" title="Scroll Back to Top" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       INTERACTIVE MODALS
+       ========================================================================= -->
+  <!-- 1. Program Detail Modal -->
+  <div class="site-modal" id="programDetailModal" role="dialog" aria-modal="true">
+    <div class="site-modal-box">
+      <button class="modal-close-x" onclick="closeModal('programDetailModal')">&times;</button>
+      <div id="programModalContent"></div>
+    </div>
+  </div>
+
+  <!-- 2. Class Booking Modal -->
+  <div class="site-modal" id="bookingModal" role="dialog" aria-modal="true">
+    <div class="site-modal-box">
+      <button class="modal-close-x" onclick="closeModal('bookingModal')">&times;</button>
+      <h3 style="font-family:var(--font-display); font-size:2rem; letter-spacing:1px; margin-bottom:8px; color:var(--text-white);">
+        RESERVE YOUR CLASS SPOT
+      </h3>
+      <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:20px;">
+        Lock in your place for today's session at The Muscle Hut.
+      </p>
+
+      <form id="classBookingForm" onsubmit="handleClassBookingSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Selected Class</label>
+          <input type="text" id="bookingClassName" class="form-control" readonly style="background:rgba(255,255,255,0.03); color:var(--primary); font-weight:700;">
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Session Slot</label>
+            <input type="text" id="bookingClassTime" class="form-control" readonly style="background:rgba(255,255,255,0.03); color:var(--text-light);">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instructor</label>
+            <input type="text" id="bookingClassTrainer" class="form-control" readonly style="background:rgba(255,255,255,0.03); color:var(--text-light);">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Name *</label>
+          <input type="text" id="bookingName" class="form-control" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Mobile Phone *</label>
+          <input type="tel" id="bookingPhone" class="form-control" placeholder="10-digit mobile number" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">
+          CONFIRM RESERVATION
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Plan Checkout / Join Modal -->
+  <div class="site-modal" id="checkoutModal" role="dialog" aria-modal="true">
+    <div class="site-modal-box">
+      <button class="modal-close-x" onclick="closeModal('checkoutModal')">&times;</button>
+      <h3 style="font-family:var(--font-display); font-size:2rem; letter-spacing:1px; margin-bottom:8px; color:var(--text-white);">
+        JOIN THE MUSCLE HUT
+      </h3>
+      <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:20px;">
+        Complete your membership enrollment to lock in this promotional rate.
+      </p>
+
+      <form id="membershipForm" onsubmit="handleMembershipSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Selected Membership Plan</label>
+          <input type="text" id="checkoutPlanName" class="form-control" readonly style="color:var(--primary); font-weight:700;">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Membership Fee</label>
+          <input type="text" id="checkoutPlanPrice" class="form-control" readonly style="font-weight:700;">
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="checkoutName" class="form-control" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mobile Phone *</label>
+            <input type="tel" id="checkoutPhone" class="form-control" placeholder="10-digit mobile" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Preferred Start Date</label>
+          <input type="date" id="checkoutDate" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:10px;">
+          COMPLETE REGISTRATION
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Success Confirmation Modal -->
+  <div class="site-modal" id="successModal" role="dialog" aria-modal="true">
+    <div class="site-modal-box" style="text-align:center;">
+      <button class="modal-close-x" onclick="closeModal('successModal')">&times;</button>
+      <div class="success-checkmark-box">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 style="font-family:var(--font-display); font-size:2.2rem; letter-spacing:1px; margin-bottom:10px; color:var(--text-white);" id="successModalTitle">
+        YOU'RE IN THE SQUAD!
+      </h3>
+      <p style="color:var(--text-light); font-size:1.05rem; line-height:1.6; margin-bottom:24px;" id="successModalMessage">
+        Your booking request has been confirmed. We have sent the details to our head coach at Sector 15, Sonipat.
+      </p>
+      <div style="background:rgba(0,255,102,0.08); border:1px solid rgba(0,255,102,0.25); border-radius:var(--radius-sm); padding:16px; margin-bottom:24px; text-align:left;">
+        <div style="color:var(--primary); font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">
+          <i class="fa-solid fa-location-dot"></i> VENUE LOCATION
+        </div>
+        <div style="font-size:0.95rem; color:var(--text-light);">
+          The Muscle Hut Gym, 1525, Sector 15 Road, Rajiv Gandhi Colony, Sonipat, Haryana 131001 (Near Raju Dairy)
+        </div>
+        <div style="font-size:0.9rem; color:var(--text-muted); margin-top:4px;">
+          Contact: <strong>+91 90341 58102</strong>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="closeModal('successModal')" style="width:100%;">
+        LET'S GET TO WORK
+      </button>
+    </div>
+  </div>
