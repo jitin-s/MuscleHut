@@ -25,9 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Preloader fade-out
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    setTimeout(() => {
-      preloader.classList.add('loaded');
-    }, 400);
+    setTimeout(() => { preloader.classList.add('loaded'); }, 50);
   }
 
   initCustomCursor();
@@ -177,7 +175,7 @@ function initHeroParticles() {
       speedY: Math.random() * 0.8 + 0.3,
       speedX: (Math.random() - 0.5) * 0.5,
       alpha: Math.random() * 0.7 + 0.2,
-      color: Math.random() > 0.3 ? '#00ff66' : '#ff4444'
+      color: Math.random() > 0.3 ? '#ff2a3b' : '#ff6a00'
     });
   }
 
@@ -287,10 +285,10 @@ function initAudioControls() {
       sfxEnabled = !sfxEnabled;
       sfxBtn.classList.toggle('active', sfxEnabled);
       if (sfxEnabled) {
-        sfxBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        sfxBtn.innerHTML = '<svg class="svg-icon" aria-hidden="true"><use href="#icon-volume-high" xlink:href="#icon-volume-high"></use></svg>';
         playUiSfx('click');
       } else {
-        sfxBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        sfxBtn.innerHTML = '<svg class="svg-icon" aria-hidden="true"><use href="#icon-volume-xmark" xlink:href="#icon-volume-xmark"></use></svg>';
       }
     });
   }
@@ -687,9 +685,9 @@ function calculateBMI() {
     recText.innerHTML = "Your BMI suggests you could benefit from lean mass gain. We recommend our <strong>Weight Training & Hypertrophy Program</strong> with caloric surplus and nutrition guidance from Coach Vikram.";
   } else if (bmi >= 18.5 && bmi < 25) {
     badge.textContent = "HEALTHY / NORMAL";
-    badge.style.background = "rgba(46, 204, 113, 0.15)";
-    badge.style.color = "#2ecc71";
-    badge.style.borderColor = "#2ecc71";
+    badge.style.background = "rgba(255, 42, 59, 0.15)";
+    badge.style.color = "#ff2a3b";
+    badge.style.borderColor = "#ff2a3b";
     recText.innerHTML = "Great job! Your BMI is in the prime athletic zone. To sculpt dense muscle and enhance conditioning, try our <strong>Iron Bodybuilding & Turf CrossFit Splits</strong>.";
   } else if (bmi >= 25 && bmi < 30) {
     badge.textContent = "OVERWEIGHT";
@@ -1118,7 +1116,7 @@ function triggerConfetti() {
   canvas.height = window.innerHeight;
 
   const confetti = [];
-  const colors = ['#00ff66', '#ffffff', '#ffcc00', '#ff3344', '#00f0ff'];
+  const colors = ['#ff2a3b', '#ffffff', '#ffb800', '#ff5500', '#ff7788'];
 
   for (let i = 0; i < 90; i++) {
     confetti.push({
@@ -1344,10 +1342,10 @@ function openProgramModal(programKey) {
     </p>
     <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:var(--radius-sm); padding:20px; margin-bottom:24px;">
       <h5 style="color:var(--primary); font-family:var(--font-heading); font-size:1rem; letter-spacing:1px; margin-bottom:12px; text-transform:uppercase;">
-        <i class="fa-solid fa-list-check"></i> What's Included in this Program:
+        <svg class="svg-icon" aria-hidden="true"><use href="#icon-list-check" xlink:href="#icon-list-check"></use></svg> What's Included in this Program:
       </h5>
       <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
-        ${data.amenities.map(a => `<li style="display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--text-light);"><i class="fa-solid fa-check" style="color:var(--primary); margin-top:3px;"></i> <span>${a}</span></li>`).join('')}
+        ${data.amenities.map(a => `<li style="display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--text-light);"><svg class="svg-icon" style="color:var(--primary); margin-top:3px;" aria-hidden="true"><use href="#icon-check" xlink:href="#icon-check"></use></svg> <span>${a}</span></li>`).join('')}
       </ul>
     </div>
     <div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:24px;">
@@ -1356,7 +1354,7 @@ function openProgramModal(programKey) {
     <div style="display:flex; gap:14px; flex-wrap:wrap;">
       <a href="#contact" class="btn btn-primary" onclick="closeModal('programDetailModal')" style="flex:1;">TRY IN FREE PASS</a>
       <a href="https://wa.me/919034158102?text=Hi%20Muscle%20Hut%2C%20tell%20me%20more%20about%20${encodeURIComponent(data.title)}" target="_blank" rel="noopener" class="btn btn-secondary" style="flex:1;">
-        <i class="fa-brands fa-whatsapp"></i> WHATSAPP INQUIRY
+        <svg class="svg-icon" aria-hidden="true"><use href="#icon-whatsapp" xlink:href="#icon-whatsapp"></use></svg> WHATSAPP INQUIRY
       </a>
     </div>
   `;
