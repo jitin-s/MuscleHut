@@ -1,11 +1,13 @@
 /**
  * THE MUSCLE HUT GYM — PRODUCTION CLIENT JAVASCRIPT
- * Fully featured vanilla JavaScript: Audio synthesizer, BMI, 1RM,
- * Before/After slider, Lightbox, Filterable gallery, Validations, Animations.
+ * Advanced vanilla JavaScript: Audio synthesizer, Ember particles canvas,
+ * Barbell plate visualizer, 15-second routine quiz, Confetti explosion,
+ * UI sound effects, BMI & 1RM calculator, Before/After slider, Lightbox.
  */
 
 // Global State
 let isPlayingPumpBeat = false;
+let sfxEnabled = true;
 let audioCtx = null;
 let beatTimer = null;
 let currentBmiUnit = 'metric';
@@ -14,31 +16,37 @@ let currentTestimonialIndex = 0;
 let testimonialInterval = null;
 let lightboxCurrentIndex = 0;
 const galleryItemsList = [];
+let quizAnswers = {};
 
 // ============================================================================
-// 1. PRELOADER & INITIALIZATION
+// 1. INITIALIZATION & DOM READY
 // ============================================================================
 window.addEventListener('DOMContentLoaded', () => {
-  // Hide preloader
+  // Preloader fade-out
   const preloader = document.getElementById('preloader');
   if (preloader) {
     setTimeout(() => {
       preloader.classList.add('loaded');
-    }, 450);
+    }, 400);
   }
 
   initCustomCursor();
   initScrollProgressBar();
+  initHeroParticles();
+  initFacilitySwitcher();
   initTypingEffect();
+  initLiveClockAndCapacity();
+  initAudioControls();
   initStatsCounter();
   initScrollReveal();
   initScheduleTabs();
   initBeforeAfterSlider();
   initGalleryFilterAndLightbox();
   initTestimonialCarousel();
-  initAudioPumpButton();
-  calculateBMI(); // initial run
-  calculate1RM(); // initial run
+  
+  // Calculate initial metrics
+  calculateBMI();
+  calculate1RM();
 
   // Set default checkout date to tomorrow
   const checkoutDateInput = document.getElementById('checkoutDate');
@@ -64,29 +72,19 @@ function initScrollProgressBar() {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     
-    if (progressBar) {
-      progressBar.style.width = scrollPercent + '%';
-    }
+    if (progressBar) progressBar.style.width = scrollPercent + '%';
 
-    // Sticky navbar styling
     if (navbar) {
-      if (scrollTop > 40) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      if (scrollTop > 40) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
     }
 
-    // Back to top button visibility
     if (backToTopBtn) {
-      if (scrollTop > 350) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
-      }
+      if (scrollTop > 350) backToTopBtn.classList.add('visible');
+      else backToTopBtn.classList.remove('visible');
     }
 
-    // Active nav link highlight based on scroll position
+    // Active nav link highlight
     let currentSectionId = '';
     sections.forEach(sec => {
       const secTop = sec.offsetTop - 120;
@@ -108,6 +106,7 @@ function initScrollProgressBar() {
 }
 
 function scrollToTop() {
+  playUiSfx('click');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -140,54 +139,317 @@ function initCustomCursor() {
   }
   renderRing();
 
-  // Hover states on interactives
-  const interactives = document.querySelectorAll('a, button, input, select, textarea, .gallery-item, .program-card, .price-switch, .unit-pill-btn');
+  const interactives = document.querySelectorAll('a, button, input, select, textarea, .gallery-item, .program-card, .price-switch, .unit-pill-btn, .facility-chip-btn');
   interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
-  });
-}
-
-// ============================================================================
-// 4. MOBILE DRAWER NAVIGATION
-// ============================================================================
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mobileDrawer = document.getElementById('mobileDrawer');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
-if (hamburgerBtn && mobileDrawer) {
-  hamburgerBtn.addEventListener('click', () => {
-    const isOpen = mobileDrawer.classList.contains('open');
-    if (isOpen) {
-      closeMobileMenu();
-    } else {
-      openMobileMenu();
-    }
-  });
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMobileMenu();
+    el.addEventListener('mouseenter', () => {
+      ring.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.classList.remove('cursor-hover');
     });
   });
 }
 
-function openMobileMenu() {
-  mobileDrawer.classList.add('open');
-  hamburgerBtn.classList.add('active');
-  hamburgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
+// ============================================================================
+// 4. HERO EMBER PARTICLES CANVAS
+// ============================================================================
+function initHeroParticles() {
+  const canvas = document.getElementById('heroParticlesCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-function closeMobileMenu() {
-  mobileDrawer.classList.remove('open');
-  hamburgerBtn.classList.remove('active');
-  hamburgerBtn.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particleCount = 45;
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.5 + 1,
+      speedY: Math.random() * 0.8 + 0.3,
+      speedX: (Math.random() - 0.5) * 0.5,
+      alpha: Math.random() * 0.7 + 0.2,
+      color: Math.random() > 0.3 ? '#00ff66' : '#ff4444'
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(p => {
+      p.y -= p.speedY;
+      p.x += p.speedX;
+
+      if (p.y < 0) {
+        p.y = height + 10;
+        p.x = Math.random() * width;
+      }
+
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    requestAnimationFrame(render);
+  }
+  render();
 }
 
 // ============================================================================
-// 5. HERO TYPING & WORD REVEAL ANIMATION
+// 5. HERO FACILITY SWITCHER
+// ============================================================================
+function initFacilitySwitcher() {
+  const chips = document.querySelectorAll('.facility-chip-btn');
+  const bgImg = document.getElementById('heroBackdropImg');
+  if (!chips.length || !bgImg) return;
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      playUiSfx('tick');
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const newSrc = chip.getAttribute('data-img');
+      const fallbackSrc = chip.getAttribute('data-fallback');
+
+      bgImg.style.opacity = '0.3';
+      setTimeout(() => {
+        bgImg.src = newSrc;
+        if (fallbackSrc) {
+          bgImg.onerror = () => { bgImg.src = fallbackSrc; };
+        }
+        bgImg.style.opacity = '1';
+      }, 250);
+    });
+  });
+}
+
+// ============================================================================
+// 6. LIVE SONIPAT CLOCK & DYNAMIC CAPACITY
+// ============================================================================
+function initLiveClockAndCapacity() {
+  const clockEl = document.getElementById('liveClockText');
+  if (!clockEl) return;
+
+  function update() {
+    const now = new Date();
+    // Format to 12-hour
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const displayHours = hours % 12 || 12;
+
+    // Estimate crowd capacity based on gym hour patterns
+    let capacityText = "OPEN";
+    if (hours >= 5 && hours < 9) {
+      capacityText = "OPEN • 72% PRIME MORNING";
+    } else if (hours >= 9 && hours < 16) {
+      capacityText = "OPEN • 38% CALM / OPEN LIFT";
+    } else if (hours >= 16 && hours < 21) {
+      capacityText = "OPEN • 85% PEAK ENERGY";
+    } else if (hours >= 21 && hours < 22) {
+      capacityText = "OPEN • 45% LATE RECOVERY";
+    } else {
+      capacityText = "OPENS 5:30 AM • SONIPAT";
+    }
+
+    clockEl.textContent = `${capacityText} (${displayHours}:${minutes} ${ampm})`;
+  }
+
+  update();
+  setInterval(update, 30000);
+}
+
+// ============================================================================
+// 7. WEB AUDIO PUMP BEAT & SYNTHESIZED UI SFX
+// ============================================================================
+function initAudioControls() {
+  const pumpBtn = document.getElementById('audioPumpBtn');
+  const pumpText = document.getElementById('audioPumpText');
+  const sfxBtn = document.getElementById('sfxToggleBtn');
+
+  if (sfxBtn) {
+    sfxBtn.addEventListener('click', () => {
+      sfxEnabled = !sfxEnabled;
+      sfxBtn.classList.toggle('active', sfxEnabled);
+      if (sfxEnabled) {
+        sfxBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        playUiSfx('click');
+      } else {
+        sfxBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+      }
+    });
+  }
+
+  if (pumpBtn) {
+    pumpBtn.addEventListener('click', () => {
+      playUiSfx('click');
+      if (!isPlayingPumpBeat) {
+        startPumpBeat();
+        pumpBtn.classList.add('playing');
+        if (pumpText) pumpText.textContent = 'STOP BEAT';
+      } else {
+        stopPumpBeat();
+        pumpBtn.classList.remove('playing');
+        if (pumpText) pumpText.textContent = 'PUMP BEAT';
+      }
+    });
+  }
+}
+
+function getAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+// Synthesized Sound Effects (No external audio files required!)
+function playUiSfx(type) {
+  if (!sfxEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    const now = ctx.currentTime;
+
+    if (type === 'click') {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(320, now);
+      osc.frequency.exponentialRampToValueAtTime(100, now + 0.04);
+      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } else if (type === 'tick') {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(580, now);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.03);
+    } else if (type === 'success') {
+      // Harmonic celebratory chime
+      [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + i * 0.08);
+        gain.gain.setValueAtTime(0.14, now + i * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + i * 0.08);
+        osc.stop(now + i * 0.08 + 0.35);
+      });
+    }
+  } catch (e) {
+    // Ignore audio errors if audio disabled by browser policy
+  }
+}
+
+// 128 BPM Workout Pump Beat Synthesizer
+function startPumpBeat() {
+  const ctx = getAudioContext();
+  isPlayingPumpBeat = true;
+  let step = 0;
+  const tempo = 128;
+  const stepInterval = (60 / tempo) * 1000 / 2;
+
+  beatTimer = setInterval(() => {
+    const now = ctx.currentTime;
+
+    // Sub Bass Kick on downbeats (0, 2, 4, 6)
+    if (step % 2 === 0) {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(34, now + 0.12);
+      gain.gain.setValueAtTime(0.65, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.15);
+    }
+
+    // Crisp Metallic Hi-Hat on offbeats (1, 3, 5, 7)
+    if (step % 2 === 1) {
+      const bufferSize = ctx.sampleRate * 0.04;
+      const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 7500;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+      noise.start(now);
+    }
+
+    // Plucky Sawtooth Synth Bassline
+    const notes = [55, 55, 65, 55, 58, 55, 73, 65];
+    const freq = notes[step] || 55;
+    const sawOsc = ctx.createOscillator();
+    const filter = ctx.createBiquadFilter();
+    const sawGain = ctx.createGain();
+    sawOsc.type = 'sawtooth';
+    sawOsc.frequency.setValueAtTime(freq, now);
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(450, now);
+    filter.frequency.exponentialRampToValueAtTime(130, now + 0.16);
+    sawGain.gain.setValueAtTime(0.18, now);
+    sawGain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+    sawOsc.connect(filter);
+    filter.connect(sawGain);
+    sawGain.connect(ctx.destination);
+    sawOsc.start(now);
+    sawOsc.stop(now + 0.2);
+
+    step = (step + 1) % 8;
+  }, stepInterval);
+}
+
+function stopPumpBeat() {
+  isPlayingPumpBeat = false;
+  if (beatTimer) {
+    clearInterval(beatTimer);
+    beatTimer = null;
+  }
+}
+
+// ============================================================================
+// 8. HERO TYPING EFFECT
 // ============================================================================
 function initTypingEffect() {
   const typingTarget = document.getElementById('typingText');
@@ -220,12 +482,12 @@ function initTypingEffect() {
     }
 
     if (!isDeleting && charIndex === currentPhrase.length) {
-      typeSpeed = 2200; // Pause at full phrase
+      typeSpeed = 2200;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       phraseIndex = (phraseIndex + 1) % phrases.length;
-      typeSpeed = 400; // Pause before typing next
+      typeSpeed = 400;
     }
 
     setTimeout(typeLoop, typeSpeed);
@@ -235,130 +497,7 @@ function initTypingEffect() {
 }
 
 // ============================================================================
-// 6. MOTIVATIONAL WORKOUT HYPE SYNTH PUMP BEAT (Web Audio API)
-// ============================================================================
-function initAudioPumpButton() {
-  const btn = document.getElementById('audioPumpBtn');
-  const btnText = document.getElementById('audioPumpText');
-  if (!btn) return;
-
-  btn.addEventListener('click', () => {
-    if (!isPlayingPumpBeat) {
-      startPumpBeat();
-      btn.classList.add('playing');
-      if (btnText) btnText.textContent = 'STOP BEAT';
-    } else {
-      stopPumpBeat();
-      btn.classList.remove('playing');
-      if (btnText) btnText.textContent = 'PUMP BEAT';
-    }
-  });
-}
-
-function startPumpBeat() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-
-  isPlayingPumpBeat = true;
-  let step = 0;
-  const tempo = 128; // 128 BPM energetic workout pace
-  const stepInterval = (60 / tempo) * 1000 / 2; // eighth notes
-
-  beatTimer = setInterval(() => {
-    const now = audioCtx.currentTime;
-
-    // 1. Kick on every quarter note (step 0, 2, 4, 6)
-    if (step % 2 === 0) {
-      playKick(now);
-    }
-
-    // 2. Offbeat Hi-hat (step 1, 3, 5, 7)
-    if (step % 2 === 1) {
-      playHihat(now);
-    }
-
-    // 3. Cyber Synth Bass Pulse on every step
-    playSynthBass(now, step);
-
-    step = (step + 1) % 8;
-  }, stepInterval);
-}
-
-function stopPumpBeat() {
-  isPlayingPumpBeat = false;
-  if (beatTimer) {
-    clearInterval(beatTimer);
-    beatTimer = null;
-  }
-}
-
-function playKick(time) {
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(140, time);
-  osc.frequency.exponentialRampToValueAtTime(32, time + 0.12);
-  gain.gain.setValueAtTime(0.7, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.14);
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.start(time);
-  osc.stop(time + 0.15);
-}
-
-function playHihat(time) {
-  // Synthesize metallic noise
-  const bufferSize = audioCtx.sampleRate * 0.04;
-  const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < bufferSize; i++) {
-    data[i] = Math.random() * 2 - 1;
-  }
-  const noise = audioCtx.createBufferSource();
-  noise.buffer = buffer;
-  const filter = audioCtx.createBiquadFilter();
-  filter.type = 'highpass';
-  filter.frequency.value = 7500;
-  const gain = audioCtx.createGain();
-  gain.gain.setValueAtTime(0.2, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.04);
-  noise.connect(filter);
-  filter.connect(gain);
-  gain.connect(audioCtx.destination);
-  noise.start(time);
-}
-
-function playSynthBass(time, step) {
-  const notes = [55, 55, 65, 55, 58, 55, 73, 65]; // Driving bass line
-  const freq = notes[step] || 55;
-  const osc = audioCtx.createOscillator();
-  const filter = audioCtx.createBiquadFilter();
-  const gain = audioCtx.createGain();
-
-  osc.type = 'sawtooth';
-  osc.frequency.setValueAtTime(freq, time);
-
-  filter.type = 'lowpass';
-  filter.frequency.setValueAtTime(450, time);
-  filter.frequency.exponentialRampToValueAtTime(120, time + 0.16);
-
-  gain.gain.setValueAtTime(0.18, time);
-  gain.gain.exponentialRampToValueAtTime(0.001, time + 0.18);
-
-  osc.connect(filter);
-  filter.connect(gain);
-  gain.connect(audioCtx.destination);
-
-  osc.start(time);
-  osc.stop(time + 0.2);
-}
-
-// ============================================================================
-// 7. STATS COUNTER ON SCROLL
+// 9. STATS COUNTER & SCROLL REVEAL
 // ============================================================================
 function initStatsCounter() {
   const counters = document.querySelectorAll('.counter');
@@ -376,16 +515,12 @@ function initStatsCounter() {
           function updateCounter(currentTime) {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
             const easeProgress = 1 - Math.pow(1 - progress, 3);
             const currentVal = Math.floor(easeProgress * target);
             counter.innerText = currentVal.toLocaleString('en-IN');
 
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.innerText = target.toLocaleString('en-IN');
-            }
+            if (progress < 1) requestAnimationFrame(updateCounter);
+            else counter.innerText = target.toLocaleString('en-IN');
           }
           requestAnimationFrame(updateCounter);
         });
@@ -397,9 +532,6 @@ function initStatsCounter() {
   if (statsSection) observer.observe(statsSection);
 }
 
-// ============================================================================
-// 8. SCROLL REVEAL ANIMATIONS
-// ============================================================================
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal-fade-up');
   const observer = new IntersectionObserver((entries) => {
@@ -415,7 +547,7 @@ function initScrollReveal() {
 }
 
 // ============================================================================
-// 9. CLASS SCHEDULE TABS
+// 10. CLASS SCHEDULE TABS & BOOKING
 // ============================================================================
 function initScheduleTabs() {
   const tabBtns = document.querySelectorAll('.schedule-tab-btn');
@@ -423,21 +555,20 @@ function initScheduleTabs() {
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      playUiSfx('tick');
       tabBtns.forEach(b => b.classList.remove('active'));
       panels.forEach(p => p.classList.remove('active'));
 
       btn.classList.add('active');
       const day = btn.getAttribute('data-day');
       const targetPanel = document.getElementById(`panel-${day}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
+      if (targetPanel) targetPanel.classList.add('active');
     });
   });
 }
 
 function bookClass(className, timeSlot, trainerName) {
-  const modal = document.getElementById('bookingModal');
+  playUiSfx('click');
   document.getElementById('bookingClassName').value = className;
   document.getElementById('bookingClassTime').value = timeSlot;
   document.getElementById('bookingClassTrainer').value = trainerName;
@@ -456,16 +587,19 @@ function handleClassBookingSubmit(e) {
   }
 
   closeModal('bookingModal');
+  triggerConfetti();
+  playUiSfx('success');
   showSuccessModal(
     "SPOT RESERVED!", 
-    `Hey <strong>${name}</strong>, your spot for <strong>${className}</strong> is reserved! Show this confirmation at the front desk when you arrive.`
+    `Hey <strong>${name}</strong>, your spot for <strong>${className}</strong> is locked in! Show this pass at the front desk when you arrive.`
   );
 }
 
 // ============================================================================
-// 10. BMI & 1RM STRENGTH CALCULATOR
+// 11. BMI & 1RM STRENGTH CALCULATOR + BARBELL VISUALIZER
 // ============================================================================
 function switchCalcTab(tab) {
+  playUiSfx('tick');
   const tabBmiToggle = document.getElementById('tabBmiToggle');
   const tabOnermToggle = document.getElementById('tabOnermToggle');
   const panelBmi = document.getElementById('panelBmi');
@@ -485,6 +619,7 @@ function switchCalcTab(tab) {
 }
 
 function setBmiUnit(unit) {
+  playUiSfx('tick');
   currentBmiUnit = unit;
   const metricBtn = document.getElementById('unitMetricBtn');
   const imperialBtn = document.getElementById('unitImperialBtn');
@@ -518,6 +653,7 @@ function setBmiUnit(unit) {
 }
 
 function calculateBMI() {
+  playUiSfx('click');
   const heightVal = parseFloat(document.getElementById('bmiHeight').value);
   const weightVal = parseFloat(document.getElementById('bmiWeight').value);
   const resultScore = document.getElementById('bmiResultScore');
@@ -535,21 +671,20 @@ function calculateBMI() {
     bmi = (weightVal / (heightVal * heightVal)) * 703;
   }
 
-  const roundedBmi = bmi.toFixed(1);
-  resultScore.textContent = roundedBmi;
+  resultScore.textContent = bmi.toFixed(1);
 
-  // Position needle on gauge (10 to 40 BMI range)
+  // Position needle on gauge
   let percent = ((bmi - 10) / (38 - 10)) * 100;
   percent = Math.max(2, Math.min(98, percent));
   needle.style.left = percent + '%';
 
-  // Category and styling
+  // Category
   if (bmi < 18.5) {
     badge.textContent = "UNDERWEIGHT";
     badge.style.background = "rgba(52, 152, 219, 0.15)";
     badge.style.color = "#3498db";
     badge.style.borderColor = "#3498db";
-    recText.innerHTML = "Your BMI suggests you could benefit from healthy muscle mass gain. We recommend our <strong>Weight Training & Hypertrophy Program</strong> with progressive caloric surplus and protein guidance from Coach Vikram.";
+    recText.innerHTML = "Your BMI suggests you could benefit from lean mass gain. We recommend our <strong>Weight Training & Hypertrophy Program</strong> with caloric surplus and nutrition guidance from Coach Vikram.";
   } else if (bmi >= 18.5 && bmi < 25) {
     badge.textContent = "HEALTHY / NORMAL";
     badge.style.background = "rgba(46, 204, 113, 0.15)";
@@ -561,7 +696,7 @@ function calculateBMI() {
     badge.style.background = "rgba(241, 196, 15, 0.15)";
     badge.style.color = "#f1c40f";
     badge.style.borderColor = "#f1c40f";
-    recText.innerHTML = "You are in a prime position for a body recomposition. Combine our <strong>Zumba & Group Aerobics</strong> with high-intensity compound lifting to incinerate fat while preserving dense muscle.";
+    recText.innerHTML = "Prime position for body recomposition. Combine our <strong>Zumba & Group Aerobics</strong> with high-intensity compound lifting to incinerate fat while preserving dense muscle.";
   } else {
     badge.textContent = "OBESE CATEGORY";
     badge.style.background = "rgba(231, 76, 60, 0.15)";
@@ -571,15 +706,15 @@ function calculateBMI() {
   }
 }
 
-// 1RM Calculation
+// 1RM Calculation & Olympic Barbell Plate Visualizer
 function calculate1RM() {
+  playUiSfx('click');
   const weight = parseFloat(document.getElementById('onermWeight').value);
   const reps = parseInt(document.getElementById('onermReps').value);
   const resultDisplay = document.getElementById('onermResultNumber');
 
   if (!weight || !reps || weight <= 0 || reps <= 0) return;
 
-  // Brzycki Formula: 1RM = Weight × (36 / (37 - Reps))
   const oneRm = weight * (36 / (37 - Math.min(reps, 12)));
   resultDisplay.innerHTML = `${oneRm.toFixed(1)} <span style="font-size:2rem; font-family:var(--font-heading);">KG</span>`;
 
@@ -587,12 +722,62 @@ function calculate1RM() {
   document.getElementById('weight85').textContent = `${(oneRm * 0.85).toFixed(1)} kg`;
   document.getElementById('weight75').textContent = `${(oneRm * 0.75).toFixed(1)} kg`;
   document.getElementById('weight65').textContent = `${(oneRm * 0.65).toFixed(1)} kg`;
+
+  // Render Olympic Barbell Plates for the 1RM weight
+  renderBarbellPlates(oneRm);
+}
+
+function renderBarbellPlates(totalKg) {
+  const shaft = document.getElementById('barbellShaftDisplay');
+  const textSummary = document.getElementById('plateTextSummary');
+  if (!shaft || !textSummary) return;
+
+  // Assume standard 20kg Olympic Barbell
+  const barWeight = 20;
+  let remainingPerSide = Math.max(0, (totalKg - barWeight) / 2);
+
+  const availablePlates = [
+    { weight: 25, class: 'plate-25', name: '25kg' },
+    { weight: 20, class: 'plate-20', name: '20kg' },
+    { weight: 15, class: 'plate-15', name: '15kg' },
+    { weight: 10, class: 'plate-10', name: '10kg' },
+    { weight: 5,  class: 'plate-5',  name: '5kg' },
+    { weight: 2.5,class: 'plate-2_5',name: '2.5kg' }
+  ];
+
+  const loadedPlates = [];
+  availablePlates.forEach(p => {
+    while (remainingPerSide >= p.weight) {
+      loadedPlates.push(p);
+      remainingPerSide -= p.weight;
+    }
+  });
+
+  shaft.innerHTML = '';
+  if (loadedPlates.length === 0) {
+    shaft.innerHTML = `<span style="color:#bbb; font-size:0.75rem; padding:0 8px;">20kg Barbell Only</span>`;
+    textSummary.textContent = "Barbell Only (20 kg)";
+    return;
+  }
+
+  loadedPlates.forEach(p => {
+    const chip = document.createElement('span');
+    chip.className = `barbell-plate-chip ${p.class}`;
+    chip.textContent = p.name;
+    shaft.appendChild(chip);
+  });
+
+  const plateCounts = {};
+  loadedPlates.forEach(p => { plateCounts[p.name] = (plateCounts[p.name] || 0) + 1; });
+  const summaryStr = Object.entries(plateCounts).map(([k, v]) => `${v}×${k}`).join(' + ');
+  textSummary.innerHTML = `Per side: <strong>${summaryStr}</strong> on 20kg Olympic Bar`;
 }
 
 // ============================================================================
-// 11. PRICING TOGGLE
+// 12. PRICING TOGGLE
 // ============================================================================
 function setBilling(cycle) {
+  playUiSfx('tick');
   currentBillingCycle = cycle;
   const toggle = document.getElementById('pricingToggleSwitch');
   const labelMonthly = document.getElementById('labelMonthly');
@@ -623,7 +808,6 @@ function updatePricingCards() {
   const periodElite = document.getElementById('periodElite');
 
   if (currentBillingCycle === 'yearly') {
-    // 25% discount on annual commit
     priceBasic.textContent = '1,125';
     periodBasic.textContent = '/ month (₹13,500/yr)';
     pricePro.textContent = '1,875';
@@ -641,7 +825,7 @@ function updatePricingCards() {
 }
 
 function openCheckoutModal(planName, monthlyRate) {
-  const modal = document.getElementById('checkoutModal');
+  playUiSfx('click');
   const rateText = currentBillingCycle === 'yearly' 
     ? `₹${(monthlyRate * 0.75).toFixed(0)}/mo (Billed annually at ₹${(monthlyRate * 0.75 * 12).toFixed(0)})`
     : `₹${monthlyRate.toLocaleString('en-IN')}/month`;
@@ -663,6 +847,8 @@ function handleMembershipSubmit(e) {
   }
 
   closeModal('checkoutModal');
+  triggerConfetti();
+  playUiSfx('success');
   showSuccessModal(
     "WELCOME TO THE MUSCLE HUT!",
     `Congratulations <strong>${name}</strong>! Your registration for the <strong>${plan}</strong> is reserved at our promotional rate. Coach Vikram will contact you shortly on <strong>${phone}</strong>.`
@@ -670,7 +856,7 @@ function handleMembershipSubmit(e) {
 }
 
 // ============================================================================
-// 12. BEFORE / AFTER DRAGGABLE SLIDER
+// 13. BEFORE / AFTER DRAGGABLE SLIDER
 // ============================================================================
 function initBeforeAfterSlider() {
   const stage = document.getElementById('baSliderStage');
@@ -700,7 +886,6 @@ function initBeforeAfterSlider() {
   });
   window.addEventListener('mouseup', () => { isDragging = false; });
 
-  // Touch Support
   stage.addEventListener('touchstart', (e) => {
     isDragging = true;
     updateSlider(e.touches[0].clientX);
@@ -713,14 +898,13 @@ function initBeforeAfterSlider() {
 }
 
 // ============================================================================
-// 13. FILTERABLE GALLERY & LIGHTBOX
+// 14. FILTERABLE GALLERY & LIGHTBOX
 // ============================================================================
 function initGalleryFilterAndLightbox() {
   const filterBtns = document.querySelectorAll('.gallery-tab-btn');
   const items = document.querySelectorAll('.gallery-item');
 
-  // Populate global gallery list for next/previous lightbox navigation
-  items.forEach((item, idx) => {
+  items.forEach((item) => {
     const img = item.querySelector('.gallery-item-img');
     const caption = item.querySelector('.gallery-item-caption')?.textContent || '';
     galleryItemsList.push({
@@ -731,6 +915,7 @@ function initGalleryFilterAndLightbox() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      playUiSfx('tick');
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -746,7 +931,6 @@ function initGalleryFilterAndLightbox() {
     });
   });
 
-  // Keyboard navigation for Lightbox
   window.addEventListener('keydown', (e) => {
     const modal = document.getElementById('lightboxModal');
     if (modal && modal.classList.contains('open')) {
@@ -758,6 +942,7 @@ function initGalleryFilterAndLightbox() {
 }
 
 function openLightbox(src, caption, fallbackSrc) {
+  playUiSfx('click');
   const modal = document.getElementById('lightboxModal');
   const img = document.getElementById('lightboxImg');
   const captionEl = document.getElementById('lightboxCaption');
@@ -770,7 +955,6 @@ function openLightbox(src, caption, fallbackSrc) {
   }
   captionEl.textContent = caption || '';
   
-  // Find index in list
   const idx = galleryItemsList.findIndex(item => item.src === src);
   if (idx !== -1) lightboxCurrentIndex = idx;
 
@@ -779,12 +963,14 @@ function openLightbox(src, caption, fallbackSrc) {
 }
 
 function closeLightbox() {
+  playUiSfx('tick');
   const modal = document.getElementById('lightboxModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
 
 function prevLightbox() {
+  playUiSfx('tick');
   if (galleryItemsList.length === 0) return;
   lightboxCurrentIndex = (lightboxCurrentIndex - 1 + galleryItemsList.length) % galleryItemsList.length;
   const item = galleryItemsList[lightboxCurrentIndex];
@@ -793,6 +979,7 @@ function prevLightbox() {
 }
 
 function nextLightbox() {
+  playUiSfx('tick');
   if (galleryItemsList.length === 0) return;
   lightboxCurrentIndex = (lightboxCurrentIndex + 1) % galleryItemsList.length;
   const item = galleryItemsList[lightboxCurrentIndex];
@@ -801,7 +988,7 @@ function nextLightbox() {
 }
 
 // ============================================================================
-// 14. TESTIMONIALS CAROUSEL
+// 15. TESTIMONIALS CAROUSEL
 // ============================================================================
 function initTestimonialCarousel() {
   const track = document.getElementById('testimonialTrack');
@@ -819,6 +1006,7 @@ function initTestimonialCarousel() {
   }
 
   window.goToTestimonial = function(index) {
+    playUiSfx('tick');
     updateSlide(index);
     resetTestimonialTimer();
   };
@@ -837,7 +1025,6 @@ function initTestimonialCarousel() {
 
   startAutoPlay();
 
-  // Pause on hover
   const viewport = document.getElementById('testimonialViewport');
   if (viewport) {
     viewport.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
@@ -846,7 +1033,7 @@ function initTestimonialCarousel() {
 }
 
 // ============================================================================
-// 15. FREE TRIAL FORM VALIDATION & SUBMISSION
+// 16. FREE TRIAL FORM SUBMISSION & CONFETTI
 // ============================================================================
 function handleTrialSubmit(e) {
   e.preventDefault();
@@ -858,7 +1045,6 @@ function handleTrialSubmit(e) {
 
   let isValid = true;
 
-  // Validate Name
   if (!nameInput.value.trim() || nameInput.value.trim().length < 2) {
     nameInput.classList.add('is-invalid');
     isValid = false;
@@ -866,7 +1052,6 @@ function handleTrialSubmit(e) {
     nameInput.classList.remove('is-invalid');
   }
 
-  // Validate Indian Phone (10 digits)
   const phoneVal = phoneInput.value.trim().replace(/\D/g, '');
   if (phoneVal.length < 10) {
     phoneInput.classList.add('is-invalid');
@@ -875,7 +1060,6 @@ function handleTrialSubmit(e) {
     phoneInput.classList.remove('is-invalid');
   }
 
-  // Validate Email (if provided)
   if (emailInput.value.trim()) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailInput.value.trim())) {
@@ -888,7 +1072,6 @@ function handleTrialSubmit(e) {
     emailInput.classList.remove('is-invalid');
   }
 
-  // Validate Goal
   if (!goalSelect.value) {
     goalSelect.classList.add('is-invalid');
     isValid = false;
@@ -896,14 +1079,18 @@ function handleTrialSubmit(e) {
     goalSelect.classList.remove('is-invalid');
   }
 
-  if (!isValid) return;
+  if (!isValid) {
+    playUiSfx('click');
+    return;
+  }
 
   const clientName = nameInput.value.trim();
   const goal = goalSelect.value;
   const slot = document.getElementById('trialSlot').value;
 
-  // Reset form
   e.target.reset();
+  triggerConfetti();
+  playUiSfx('success');
 
   showSuccessModal(
     "FREE PASS CONFIRMED!",
@@ -911,19 +1098,154 @@ function handleTrialSubmit(e) {
   );
 }
 
-// Newsletter
 function handleNewsletter(e) {
   e.preventDefault();
   const input = document.getElementById('newsEmail');
   const successEl = document.getElementById('newsSuccess');
   if (input.value.trim()) {
     input.value = '';
+    playUiSfx('success');
     if (successEl) successEl.style.display = 'block';
   }
 }
 
+// Canvas Confetti Generator
+function triggerConfetti() {
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confetti = [];
+  const colors = ['#00ff66', '#ffffff', '#ffcc00', '#ff3344', '#00f0ff'];
+
+  for (let i = 0; i < 90; i++) {
+    confetti.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      r: Math.random() * 6 + 3,
+      d: Math.random() * 90,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      tilt: Math.floor(Math.random() * 10) - 10,
+      tiltAngleIncremental: (Math.random() * 0.07) + 0.05,
+      tiltAngle: 0,
+      vx: (Math.random() - 0.5) * 18,
+      vy: (Math.random() - 0.8) * 16,
+      gravity: 0.35,
+      alpha: 1
+    });
+  }
+
+  let frames = 0;
+  function renderConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    frames++;
+
+    confetti.forEach(c => {
+      c.x += c.vx;
+      c.y += c.vy;
+      c.vy += c.gravity;
+      c.tiltAngle += c.tiltAngleIncremental;
+      c.tilt = Math.sin(c.tiltAngle) * 12;
+      c.alpha -= 0.012;
+
+      if (c.alpha > 0) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, c.alpha);
+        ctx.fillStyle = c.color;
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    });
+
+    if (frames < 90) {
+      requestAnimationFrame(renderConfetti);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  renderConfetti();
+}
+
 // ============================================================================
-// 16. PROGRAM MODAL DATA & CONTROLLER
+// 17. 15-SECOND BEAST ROUTINE MATCHER QUIZ
+// ============================================================================
+function answerQuiz(step, val) {
+  playUiSfx('click');
+  quizAnswers[`step${step}`] = val;
+
+  document.getElementById(`quizStep${step}`).style.display = 'none';
+
+  if (step === 1) {
+    document.getElementById('quizStep2').style.display = 'block';
+  } else if (step === 2) {
+    document.getElementById('quizStep3').style.display = 'block';
+  } else if (step === 3) {
+    computeQuizResults();
+  }
+}
+
+function computeQuizResults() {
+  const resultStep = document.getElementById('quizResult');
+  const title = document.getElementById('quizResultTitle');
+  const desc = document.getElementById('quizResultDesc');
+  const days = document.getElementById('quizResultDays');
+
+  const goal = quizAnswers.step1 || 'hypertrophy';
+  const freq = quizAnswers.step2 || '4days';
+  const level = quizAnswers.step3 || 'intermediate';
+
+  let routineTitle = "";
+  let routineDesc = "";
+  let routineDays = "";
+
+  if (goal === 'hypertrophy') {
+    if (freq === '6days') {
+      routineTitle = "The Muscle Hut 6-Day PPL Hypertrophy Protocol";
+      routineDesc = "High-volume Push/Pull/Legs rotation twice per week. Prioritizes compound bench press, Romanian deadlifts, squat racks, and bio-mechanical cables with progressive overload.";
+      routineDays = "Schedule: Mon (Push) • Tue (Pull) • Wed (Legs) • Thu (Push) • Fri (Pull) • Sat (Legs) • Sun (Rest)";
+    } else {
+      routineTitle = "The 4-Day Upper / Lower Muscle Split";
+      routineDesc = "Optimal hypertrophy frequency with high recovery capacity. Mon/Thu focused on chest, back, and shoulders; Tue/Fri dedicated to quads, hamstrings, and calves.";
+      routineDays = "Schedule: Mon (Upper Power) • Tue (Lower Power) • Thu (Upper Hypertrophy) • Fri (Lower Hypertrophy)";
+    }
+  } else if (goal === 'fatloss') {
+    routineTitle = "The Turf Shred & Zumba Hybrid Protocol";
+    routineDesc = "Torch fat while preserving muscle mass. Alternates heavy strength maintenance days with high-octane evening Zumba sessions and prowler sled conditioning on the green turf.";
+    routineDays = "Schedule: Mon (Strength) • Tue (Zumba Aerobics) • Thu (Strength) • Fri (Turf HIIT & Core) • Sat (Circuit)";
+  } else {
+    routineTitle = "The Sonipat Powerlifting & Strength Engine";
+    routineDesc = "Engineered for maximum raw numbers. Centered around Coach Rohit's 5x5 barbell power progression on squat, bench press, and deadlift platforms.";
+    routineDays = "Schedule: Mon (Heavy Bench) • Wed (Heavy Squat) • Fri (Heavy Deadlift) • Sat (Accessory & Grip)";
+  }
+
+  title.textContent = routineTitle;
+  desc.textContent = routineDesc;
+  days.textContent = routineDays;
+
+  resultStep.style.display = 'block';
+  triggerConfetti();
+  playUiSfx('success');
+}
+
+function claimQuizPass() {
+  closeModal('quizModal');
+  const goal = document.getElementById('trialGoal');
+  if (goal) goal.value = "Muscle Building / Hypertrophy";
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+}
+
+function shareQuizOnWhatsApp() {
+  const title = document.getElementById('quizResultTitle').textContent;
+  const url = `https://wa.me/919034158102?text=Hi%20Muscle%20Hut%20Gym%2C%20I%20took%20the%20quiz%20and%20got%20matched%20with%3A%20${encodeURIComponent(title)}.%20I%20want%20to%20start%20this%20routine!`;
+  window.open(url, '_blank');
+}
+
+// ============================================================================
+// 18. PROGRAM MODALS
 // ============================================================================
 const programDetailsData = {
   'weight-training': {
@@ -1007,6 +1329,7 @@ const programDetailsData = {
 };
 
 function openProgramModal(programKey) {
+  playUiSfx('click');
   const data = programDetailsData[programKey];
   if (!data) return;
 
@@ -1041,9 +1364,7 @@ function openProgramModal(programKey) {
   openModal('programDetailModal');
 }
 
-// ============================================================================
-// 17. MODAL UTILITY FUNCTIONS
-// ============================================================================
+// Modal Utility
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
@@ -1053,6 +1374,7 @@ function openModal(modalId) {
 }
 
 function closeModal(modalId) {
+  playUiSfx('tick');
   const modal = document.getElementById(modalId);
   if (modal) {
     modal.classList.remove('open');
@@ -1060,7 +1382,6 @@ function closeModal(modalId) {
   }
 }
 
-// Close modals when clicking backdrop
 window.addEventListener('click', (e) => {
   if (e.target.classList.contains('site-modal')) {
     e.target.classList.remove('open');

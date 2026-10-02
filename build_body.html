@@ -14,6 +14,9 @@
   <div class="custom-cursor-dot" id="cursorDot"></div>
   <div class="custom-cursor-ring" id="cursorRing"></div>
 
+  <!-- Canvas Confetti -->
+  <canvas id="confettiCanvas"></canvas>
+
   <!-- =========================================================================
        1. STICKY NAVBAR
        ========================================================================= -->
@@ -37,7 +40,7 @@
           <li><a href="#programs" class="nav-link">Programs</a></li>
           <li><a href="#trainers" class="nav-link">Trainers</a></li>
           <li><a href="#schedule" class="nav-link">Schedule</a></li>
-          <li><a href="#bmi" class="nav-link">BMI Calc</a></li>
+          <li><a href="#bmi" class="nav-link">Metrics</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#testimonials" class="nav-link">Reviews</a></li>
@@ -47,14 +50,19 @@
 
       <!-- Navbar Right Controls -->
       <div class="nav-right-controls">
-        <!-- Live Open Badge -->
-        <div class="live-status-pill" title="Gym Operating Hours">
+        <!-- Live Open & Sonipat Time Badge -->
+        <div class="live-status-pill" id="liveStatusPill" title="Live Gym Operating Status">
           <span class="live-dot"></span>
-          <span>OPEN 5:30 AM - 10 PM</span>
+          <span id="liveClockText">OPEN • 5:30 AM - 10 PM</span>
         </div>
 
-        <!-- Cool Synth Audio Pump Button -->
-        <button class="audio-pump-btn" id="audioPumpBtn" title="Toggle Motivational Workout Hype Beat">
+        <!-- UI Sound FX Toggle -->
+        <button class="sfx-toggle-btn active" id="sfxToggleBtn" title="Toggle UI Sound Effects" aria-label="Toggle Sound Effects">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+
+        <!-- Web Audio Pump Beat Widget -->
+        <button class="audio-pump-btn" id="audioPumpBtn" title="Toggle Workout Hype Synth Beat">
           <div class="audio-bars">
             <span class="audio-bar"></span>
             <span class="audio-bar"></span>
@@ -84,7 +92,7 @@
       <li><a href="#programs" class="nav-link mobile-link">Programs</a></li>
       <li><a href="#trainers" class="nav-link mobile-link">Trainers</a></li>
       <li><a href="#schedule" class="nav-link mobile-link">Schedule</a></li>
-      <li><a href="#bmi" class="nav-link mobile-link">BMI Calculator</a></li>
+      <li><a href="#bmi" class="nav-link mobile-link">Fitness Metrics (BMI & 1RM)</a></li>
       <li><a href="#pricing" class="nav-link mobile-link">Membership Plans</a></li>
       <li><a href="#gallery" class="nav-link mobile-link">Transformation Gallery</a></li>
       <li><a href="#testimonials" class="nav-link mobile-link">Member Reviews</a></li>
@@ -103,12 +111,13 @@
     <section class="hero-section" id="hero">
       <div class="hero-bg-media">
         <!-- High-res authentic gym interior backdrop with error fallback -->
-        <img class="hero-bg-img" 
+        <img class="hero-bg-img" id="heroBackdropImg"
              src="images/interior_main.jpg" 
              alt="The Muscle Hut Gym Interior Sector 15 Sonipat"
              onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no';" />
       </div>
       <div class="hero-overlay"></div>
+      <canvas id="heroParticlesCanvas"></canvas>
       <div class="hero-glow-orb"></div>
       <div class="bg-outline-text" style="top: 15%; right: -5%;">MUSCLE HUT</div>
 
@@ -133,6 +142,25 @@
             Welcome to <strong>The Muscle Hut Gym</strong> in Sector 15, Sonipat. High-performance bio-mechanical equipment, Olympic free weights, dedicated turf aerobics arena, and expert coaching. 
             Transform your body for just <strong>₹1,500/month</strong>.
           </p>
+
+          <!-- Interactive Facility View Switcher Chips -->
+          <div class="facility-switcher-strip">
+            <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-right:4px;">
+              FACILITY SNEAK PEEK:
+            </span>
+            <button class="facility-chip-btn active" data-img="images/interior_main.jpg" data-fallback="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RSE430pdX-nhEOdW4l8w7YxQTlKRf1dp41jm11Wwl6hlbac5EovZXeSBokfGgz8_Mm2D7eFMjpbSk6_EcY7nHnj3PH42PJXiBE1RV7gqHMV3TBNmetrw24kjqNWFGgt36wKzkVTw=w1600-h1200-k-no">
+              <i class="fa-solid fa-dumbbell"></i> Main Weight Floor
+            </button>
+            <button class="facility-chip-btn" data-img="images/group_fitness.jpg" data-fallback="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tth984a84hqELOhPd4_bw0xtOHBeK7R_BxIwGtQBqKR3YAPbwsUydVeIpfZMGL5dJQjXiRvZcl6fA7tHPOiwiYy2MQk3il0c4ijlxugaI_bY73N0rvk1GmmXSbA6bxpdmNplhn=s1600">
+              <i class="fa-solid fa-users"></i> Aerobics & Zumba
+            </button>
+            <button class="facility-chip-btn" data-img="images/workout_pushup.jpg" data-fallback="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TiBSgzefhumxtlZkCf0uKCI1eF-mS0ozj89uIALmURDm8eDryJPTTPqOxPSuGI1Qk0_cy3AcLUjndWpJrZDPpI6n5TJuqK0V3LCxT8rRWf7hN-x6yLvG-TK4i2_LdMu0o7DPOi1w=s1600">
+              <i class="fa-solid fa-person-running"></i> Turf Arena
+            </button>
+            <button class="facility-chip-btn" data-img="images/trainer_floor.jpg" data-fallback="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SYAeT4uFXmUgEiaI80RWsXJ7sEN4oIJ4GxiwPMNe8o_1JBLrGpdiafTQjTR3oxVNeTYi9a93SIy09ChQ8Ye7gyLLZgHdatgqIs70drJGOhdyFj4q2tcn1zGO15JAjcFhIASrtjfA=s1600">
+              <i class="fa-solid fa-heart-pulse"></i> Vibration & Recovery
+            </button>
+          </div>
 
           <!-- Action Buttons -->
           <div class="hero-cta-group">
@@ -482,6 +510,17 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Cool Interactive Routine Matcher Banner -->
+        <div class="routine-quiz-banner reveal-fade-up">
+          <div class="quiz-banner-text">
+            <h4><i class="fa-solid fa-wand-magic-sparkles text-neon"></i> NOT SURE WHICH PROGRAM SUITS YOU?</h4>
+            <p>Take our 15-second Beast Workout Matcher Quiz to get your personalized Sonipat training split.</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('quizModal')">
+            <i class="fa-solid fa-bolt"></i> TAKE 15-SEC QUIZ
+          </button>
         </div>
       </div>
     </section>
@@ -987,7 +1026,7 @@
             </button>
             <button class="calc-tab-toggle" id="tabOnermToggle" onclick="switchCalcTab('onerm')">
               <i class="fa-solid fa-dumbbell"></i>
-              <span>1-REP MAX (1RM) STRENGTH</span>
+              <span>1-REP MAX (1RM) & PLATES</span>
             </button>
           </div>
 
@@ -1069,7 +1108,7 @@
             </div>
           </div>
 
-          <!-- 1RM Strength Panel -->
+          <!-- 1RM Strength Panel + Olympic Barbell Visualizer -->
           <div class="calc-panel" id="panelOnerm">
             <div class="calc-two-col">
               <!-- 1RM Inputs -->
@@ -1098,17 +1137,28 @@
                   </div>
                 </div>
                 <button type="button" class="btn btn-primary" style="width:100%; margin-top:10px;" onclick="calculate1RM()">
-                  <i class="fa-solid fa-dumbbell"></i> CALCULATE 1RM
+                  <i class="fa-solid fa-dumbbell"></i> CALCULATE 1RM & PLATES
                 </button>
               </div>
 
-              <!-- 1RM Table Display -->
+              <!-- 1RM Table & Olympic Barbell Display -->
               <div class="calc-result-display">
                 <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px;">
                   ESTIMATED 1-REP MAX
                 </div>
-                <div class="bmi-score-number" id="onermResultNumber" style="color:var(--primary);">93.3 <span style="font-size:2rem; font-family:var(--font-heading);">KG</span></div>
+                <div class="bmi-score-number" id="onermResultNumber" style="color:var(--primary);">92.9 <span style="font-size:2rem; font-family:var(--font-heading);">KG</span></div>
                 
+                <!-- Barbell Plate Breakdown Graphic -->
+                <div class="barbell-plate-display">
+                  <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">
+                    <i class="fa-solid fa-layer-group text-neon"></i> OLYMPIC BARBELL LOAD (PER SIDE WITH 20KG BAR):
+                  </div>
+                  <div class="barbell-shaft" id="barbellShaftDisplay">
+                    <!-- Plates inserted dynamically -->
+                  </div>
+                  <div id="plateTextSummary" style="font-size:0.85rem; color:var(--text-light); font-weight:600;"></div>
+                </div>
+
                 <table class="onerm-table">
                   <thead>
                     <tr>
@@ -1120,22 +1170,22 @@
                   <tbody>
                     <tr>
                       <td>95%</td>
-                      <td id="weight95">88.6 kg</td>
+                      <td id="weight95">88.3 kg</td>
                       <td>1 - 2 Reps (Max Effort)</td>
                     </tr>
                     <tr>
                       <td>85%</td>
-                      <td id="weight85">79.3 kg</td>
+                      <td id="weight85">79.0 kg</td>
                       <td>4 - 6 Reps (Strength)</td>
                     </tr>
                     <tr>
                       <td>75%</td>
-                      <td id="weight75">70.0 kg</td>
+                      <td id="weight75">69.7 kg</td>
                       <td>8 - 10 Reps (Hypertrophy)</td>
                     </tr>
                     <tr>
                       <td>65%</td>
-                      <td id="weight65">60.6 kg</td>
+                      <td id="weight65">60.4 kg</td>
                       <td>12 - 15 Reps (Endurance)</td>
                     </tr>
                   </tbody>
@@ -1898,5 +1948,89 @@
       <button class="btn btn-primary" onclick="closeModal('successModal')" style="width:100%;">
         LET'S GET TO WORK
       </button>
+    </div>
+  </div>
+
+  <!-- 5. Interactive 15-Second Beast Routine Matcher Quiz Modal -->
+  <div class="site-modal" id="quizModal" role="dialog" aria-modal="true">
+    <div class="site-modal-box">
+      <button class="modal-close-x" onclick="closeModal('quizModal')">&times;</button>
+      <div id="quizContainer">
+        <div class="hero-badge-tag" style="margin-bottom:12px; font-size:0.75rem;">15-SECOND ROUTINE GENERATOR</div>
+        <h3 style="font-family:var(--font-display); font-size:2.2rem; letter-spacing:1px; margin-bottom:8px; color:var(--text-white);">
+          FIND YOUR PERFECT SPLIT
+        </h3>
+        <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:24px;">
+          Answer 3 rapid questions and get your personalized Muscle Hut workout blueprint.
+        </p>
+
+        <!-- Question 1 -->
+        <div class="quiz-step" id="quizStep1">
+          <h5 style="color:var(--text-white); font-size:1.1rem; margin-bottom:14px;">1. What is your #1 primary fitness goal right now?</h5>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(1, 'hypertrophy')">
+              <i class="fa-solid fa-dumbbell text-neon"></i> Max Muscle Building & Hypertrophy
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(1, 'fatloss')">
+              <i class="fa-solid fa-fire text-crimson"></i> Aggressive Fat Loss & Toning
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(1, 'strength')">
+              <i class="fa-solid fa-weight-hanging" style="color:#ffaa00;"></i> Powerlifting & Raw Heavy Strength
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-step" id="quizStep2" style="display:none;">
+          <h5 style="color:var(--text-white); font-size:1.1rem; margin-bottom:14px;">2. How many days per week can you realistically commit?</h5>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(2, '3days')">
+              <i class="fa-solid fa-calendar-check text-neon"></i> 3 Days / Week (Full Body Routine)
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(2, '4days')">
+              <i class="fa-solid fa-calendar-check text-neon"></i> 4 Days / Week (Upper / Lower Split)
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(2, '6days')">
+              <i class="fa-solid fa-calendar-check text-neon"></i> 6 Days / Week (Push-Pull-Legs Dedicated)
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-step" id="quizStep3" style="display:none;">
+          <h5 style="color:var(--text-white); font-size:1.1rem; margin-bottom:14px;">3. What is your gym lifting experience level?</h5>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(3, 'beginner')">
+              <i class="fa-solid fa-seedling text-neon"></i> Beginner (Under 6 months experience)
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(3, 'intermediate')">
+              <i class="fa-solid fa-shield text-neon"></i> Intermediate (6 months - 2 years)
+            </button>
+            <button type="button" class="btn btn-secondary quiz-opt" style="justify-content:flex-start;" onclick="answerQuiz(3, 'advanced')">
+              <i class="fa-solid fa-crown text-gold"></i> Beast / Advanced (2+ years heavy training)
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Result Container -->
+        <div class="quiz-step" id="quizResult" style="display:none; text-align:left;">
+          <div style="background:rgba(0,255,102,0.1); border:1.5px solid var(--primary); border-radius:var(--radius-md); padding:22px; margin-bottom:20px;">
+            <div style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">
+              RECOMMENDED BLUEPRINT
+            </div>
+            <h4 id="quizResultTitle" style="font-family:var(--font-display); font-size:1.9rem; color:#fff; margin-bottom:8px;"></h4>
+            <p id="quizResultDesc" style="font-size:0.95rem; color:var(--text-light); line-height:1.6; margin-bottom:16px;"></p>
+            <div id="quizResultDays" style="font-size:0.9rem; color:var(--text-muted); font-weight:600;"></div>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="claimQuizPass()" style="flex:1;">
+              <i class="fa-solid fa-ticket"></i> TRY THIS IN FREE PASS
+            </button>
+            <button class="btn btn-secondary" onclick="shareQuizOnWhatsApp()" style="flex:1;">
+              <i class="fa-brands fa-whatsapp"></i> SAVE ON WHATSAPP
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
