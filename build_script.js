@@ -7,7 +7,7 @@
 
 // Global State
 let isPlayingPumpBeat = false;
-let sfxEnabled = true;
+let sfxEnabled = false;
 let audioCtx = null;
 let beatTimer = null;
 let currentBmiUnit = 'metric';
@@ -35,7 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
   initFacilitySwitcher();
   initTypingEffect();
   initLiveClockAndCapacity();
-  initAudioControls();
   initStatsCounter();
   initScrollReveal();
   initScheduleTabs();
