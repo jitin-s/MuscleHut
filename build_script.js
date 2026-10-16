@@ -30,6 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   initCustomCursor();
   initScrollProgressBar();
+  initMobileNavigation();
   initHeroParticles();
   initFacilitySwitcher();
   initTypingEffect();
@@ -106,6 +107,44 @@ function initScrollProgressBar() {
 function scrollToTop() {
   playUiSfx('click');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function initMobileNavigation() {
+  const menuButton = document.getElementById('hamburgerBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  if (!menuButton || !drawer) return;
+
+  const setMenuState = (isOpen) => {
+    drawer.classList.toggle('open', isOpen);
+    menuButton.classList.toggle('active', isOpen);
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    drawer.setAttribute('aria-hidden', String(!isOpen));
+    document.body.classList.toggle('menu-open', isOpen);
+  };
+
+  menuButton.addEventListener('click', () => {
+    setMenuState(!drawer.classList.contains('open'));
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && drawer.classList.contains('open')) {
+      setMenuState(false);
+      menuButton.focus();
+    }
+  });
+
+  drawer.addEventListener('click', (event) => {
+    if (event.target === drawer) setMenuState(false);
+  });
+
+  window.matchMedia('(min-width: 1081px)').addEventListener('change', (event) => {
+    if (event.matches) setMenuState(false);
+  });
 }
 
 // ============================================================================

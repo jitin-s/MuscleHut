@@ -26,23 +26,23 @@
    ========================================================================== */
 
 :root {
-  --bg-darkest: #050608;
-  --bg-dark: #0a0c11;
-  --bg-surface: #10131b;
-  --bg-surface-elevated: #151a26;
+  --bg-darkest: #070806;
+  --bg-dark: #0d100b;
+  --bg-surface: #141910;
+  --bg-surface-elevated: #1b2415;
   --bg-card: rgba(16, 20, 29, 0.78);
   --bg-card-hover: rgba(22, 28, 41, 0.96);
   
-  --primary: #ff2a3b;
-  --primary-rgb: 255, 42, 59;
-  --primary-glow: rgba(255, 42, 59, 0.45);
-  --primary-dark: #d81224;
-  --primary-light: #ff6b78;
+  --primary: #d7ff3f;
+  --primary-rgb: 215, 255, 63;
+  --primary-glow: rgba(215, 255, 63, 0.35);
+  --primary-dark: #a8d51e;
+  --primary-light: #edff9b;
   
-  --secondary: #ff3344;
-  --secondary-glow: rgba(255, 51, 68, 0.4);
-  --accent-gold: #ffcc00;
-  --accent-cyan: #00f0ff;
+  --secondary: #ff7043;
+  --secondary-glow: rgba(255, 112, 67, 0.35);
+  --accent-gold: #ffd166;
+  --accent-cyan: #7ee7ff;
   
   --text-white: #ffffff;
   --text-light: #f1f4f9;
@@ -2669,4 +2669,77 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Fitova-inspired responsive shell polish */
+.site-navbar {
+  height: 88px;
+  background: linear-gradient(180deg, rgba(7, 8, 6, 0.8), transparent);
+}
+.site-navbar.scrolled {
+  height: 76px;
+  background: rgba(9, 12, 7, 0.88);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border-bottom-color: rgba(215, 255, 63, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.48);
+}
+.navbar-inner { gap: clamp(16px, 2vw, 34px); }
+.navbar-nav {
+  justify-content: center;
+  gap: clamp(11px, 1.25vw, 22px);
+  flex: 1;
+}
+.nav-link { font-size: 0.76rem; letter-spacing: 1px; }
+.nav-right-controls { gap: 9px; flex-shrink: 0; }
+.site-navbar .btn-sm.d-none { display: none; }
+.mobile-nav-drawer {
+  background:
+    radial-gradient(circle at 50% 15%, rgba(215, 255, 63, 0.12), transparent 35%),
+    rgba(7, 8, 6, 0.98);
+  backdrop-filter: blur(25px) saturate(1.15);
+  -webkit-backdrop-filter: blur(25px) saturate(1.15);
+  padding: 104px 22px 34px;
+  overflow-y: auto;
+}
+.mobile-nav-links {
+  gap: 8px;
+  margin: 0 auto 28px;
+  width: min(100%, 420px);
+}
+.mobile-nav-links .nav-link {
+  font-size: clamp(1.5rem, 7vw, 2.25rem);
+  display: block;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+}
+.mobile-nav-links .nav-link::after { display: none; }
+.mobile-nav-links .nav-link:hover,
+.mobile-nav-links .nav-link.active {
+  color: var(--primary);
+  background: rgba(215, 255, 63, 0.08);
+}
+body.menu-open { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .site-navbar,
+  .site-navbar.scrolled { height: 72px; }
+  .navbar-inner { padding-left: 16px; padding-right: 16px; }
+  .brand-icon-box { width: 38px; height: 38px; }
+  .brand-main-title { font-size: 1.35rem; }
+  .brand-sub-location { font-size: 0.55rem; letter-spacing: 1.4px; }
+  .audio-pump-btn,
+  .sfx-toggle-btn { display: none; }
+  .nav-right-controls { gap: 4px; }
+  .navbar-brand { gap: 9px; }
+}
+
+@media (min-width: 1081px) and (max-width: 1240px) {
+  .live-status-pill { display: none; }
+  .navbar-nav { gap: 10px; }
+  .nav-link { font-size: 0.71rem; }
+}
+
+@media (min-width: 1081px) {
+  .site-navbar .btn-sm.d-none { display: inline-flex; }
 }
