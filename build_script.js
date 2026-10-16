@@ -603,11 +603,11 @@ function initScheduleTabs() {
   });
 }
 
-function bookClass(className, timeSlot, trainerName) {
+function bookClass(className, timeSlot, teamName) {
   playUiSfx('click');
   document.getElementById('bookingClassName').value = className;
   document.getElementById('bookingClassTime').value = timeSlot;
-  document.getElementById('bookingClassTrainer').value = trainerName;
+  document.getElementById('bookingClassTrainer').value = teamName;
   openModal('bookingModal');
 }
 
@@ -720,7 +720,7 @@ function calculateBMI() {
     badge.style.background = "rgba(52, 152, 219, 0.15)";
     badge.style.color = "#3498db";
     badge.style.borderColor = "#3498db";
-    recText.innerHTML = "Your BMI suggests you could benefit from lean mass gain. We recommend our <strong>Weight Training & Hypertrophy Program</strong> with caloric surplus and nutrition guidance from Coach Vikram.";
+    recText.innerHTML = "Your BMI suggests you could benefit from lean mass gain. We recommend our <strong>Weight Training & Hypertrophy Program</strong> with caloric surplus and nutrition guidance from the Muscle Hut team.";
   } else if (bmi >= 18.5 && bmi < 25) {
     badge.textContent = "HEALTHY / NORMAL";
     badge.style.background = "rgba(255, 42, 59, 0.15)";
@@ -738,7 +738,7 @@ function calculateBMI() {
     badge.style.background = "rgba(231, 76, 60, 0.15)";
     badge.style.color = "#e74c3c";
     badge.style.borderColor = "#e74c3c";
-    recText.innerHTML = "Our certified coaches in Sector 15 specialize in sustainable fat loss transformations without joint impact. Start with our <strong>1-on-1 Personal Coaching</strong> and low-impact cardio turf protocols.";
+    recText.innerHTML = "Our expert guidance in Sector 15 specialize in sustainable fat loss transformations without joint impact. Start with our <strong>1-on-1 Personal Training</strong> and low-impact cardio turf protocols.";
   }
 }
 
@@ -887,7 +887,7 @@ function handleMembershipSubmit(e) {
   playUiSfx('success');
   showSuccessModal(
     "WELCOME TO THE MUSCLE HUT!",
-    `Congratulations <strong>${name}</strong>! Your registration for the <strong>${plan}</strong> is reserved at our promotional rate. Coach Vikram will contact you shortly on <strong>${phone}</strong>.`
+    `Congratulations <strong>${name}</strong>! Your registration for the <strong>${plan}</strong> is reserved at our promotional rate. the Muscle Hut team will contact you shortly on <strong>${phone}</strong>.`
   );
 }
 
@@ -1254,7 +1254,7 @@ function computeQuizResults() {
     routineDays = "Schedule: Mon (Strength) • Tue (Zumba Aerobics) • Thu (Strength) • Fri (Turf HIIT & Core) • Sat (Circuit)";
   } else {
     routineTitle = "The Sonipat Powerlifting & Strength Engine";
-    routineDesc = "Engineered for maximum raw numbers. Centered around Coach Rohit's 5x5 barbell power progression on squat, bench press, and deadlift platforms.";
+    routineDesc = "Engineered for maximum raw numbers. Centered around the Muscle Hut team's 5x5 barbell power progression on squat, bench press, and deadlift platforms.";
     routineDays = "Schedule: Mon (Heavy Bench) • Wed (Heavy Squat) • Fri (Heavy Deadlift) • Sat (Accessory & Grip)";
   }
 
@@ -1293,7 +1293,7 @@ const programDetailsData = {
       'Dumbbell racks progressing up to 50 kg pairs',
       'Dual adjustable cable crossovers and multi-pulley stations',
       'Specialized chest, back, and hamstring isolation machines',
-      'Daily posture evaluation and form corrections by Coach Vikram'
+      'Daily posture evaluation and form corrections by the Muscle Hut team'
     ],
     recommendedFor: 'Anyone wanting to build lean muscle mass, gain raw functional power, and reshape body composition.'
   },
@@ -1315,7 +1315,7 @@ const programDetailsData = {
     badge: 'HIGH-OCTANE CARDIO',
     desc: 'Experience Sonipat’s most electrifying group fitness class! Set to infectious Punjabi beats, Latin rhythms, and modern dance music, our Zumba sessions burn upwards of 600 calories an hour while elevating mood and cardiovascular health.',
     amenities: [
-      'Choreographed by licensed Zumba specialist Coach Priya',
+      'Choreographed by licensed Zumba specialist',
       'High-impact acoustic sound setup and laser mood lighting',
       'Non-slip cushioned turf and aerobics studio flooring',
       'Supportive and motivating group culture suitable for all ages',
@@ -1342,7 +1342,7 @@ const programDetailsData = {
     desc: 'Condition like a combat athlete. Master technical punching combinations, slipping drills, rapid rotational hip torque, and relentless interval conditioning on heavy bags and speed stations.',
     amenities: [
       'Professional heavy hanging leather bags',
-      'Focus mitt rounds with certified combat coach',
+      'Focus mitt rounds with combat conditioning specialist',
       'Skipping rope speed technique instruction',
       'Rotational medicine ball power drills',
       'Hand wraps and gloves sanitation protocols'
@@ -1350,15 +1350,15 @@ const programDetailsData = {
     recommendedFor: 'Individuals looking to build real athletic endurance, hand-eye coordination, and stress de-escalation.'
   },
   'personal-training': {
-    title: '1-on-1 VIP Personal Coaching',
+    title: '1-on-1 VIP Personal Training',
     badge: 'FAST-TRACK TRANSFORMATION',
-    desc: 'The fastest path to your goal. Work exclusively with a certified personal coach who designs your custom lifting split, supervises every single rep, checks biomechanical angles, and monitors your dietary macros weekly.',
+    desc: 'The fastest path to your goal. Work exclusively with a certified gym professional who designs your custom lifting split, supervises every single rep, checks biomechanical angles, and monitors your dietary macros weekly.',
     amenities: [
       'Dedicated 1-on-1 private training sessions',
       'Customized macronutrient diet and grocery blueprint',
       'Weekly skinfold body fat & circumferences tracking',
       'Priority access to all machines during peak hours',
-      'Direct WhatsApp trainer consultation 24/7'
+      'Direct WhatsApp gym support 24/7'
     ],
     recommendedFor: 'Beginners needing safe instruction, individuals with stubborn plateaus, and busy professionals needing strict accountability.'
   }
