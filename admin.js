@@ -63,7 +63,10 @@
       published_at: published ? new Date().toISOString() : null
     };
     const { error } = await client.from('articles').insert(article);
-    if (error) { setMessage('articleMessage', 'Article was not saved. Check that the latest SQL migration is installed.'); return; }
+    if (error) {
+      setMessage('articleMessage', formatArticleError(error));
+      return;
+    }
     setMessage('articleMessage', published ? 'Article published securely.' : 'Draft saved securely.');
     event.target.reset();
     slugWasEdited = false;
@@ -135,5 +138,20 @@
     document.querySelector('#articlePreview .preview-body').textContent = contentInput.value.trim() || 'Your article content preview will appear here.';
   }
   function setMessage(id, message) { document.getElementById(id).textContent = message; }
+  function formatArticleError(error) {
+    if (error.code === '42501' || /row-level security|permission denied/i.test(error.message || '')) {
+      return 'Article was not saved: your Supabase user is not authorized as an admin. Reapply the admin app_metadata role and sign in again.';
+    }
+    if (error.code === 'PGRST204' || /column .* does not exist|schema cache/i.test(error.message || '')) {
+      return 'Article was not saved: run the latest supabase/schema.sql in Supabase SQL Editor, then retry.';
+    }
+    if (error.code === '23505') {
+      return 'Article was not saved: this URL slug already exists. Use a different slug.';
+    }
+    if (error.code === '23514') {
+      return 'Article was not saved: one of the fields is outside its allowed length or value range.';
+    }
+    return `Article was not saved: ${error.message || 'Supabase returned an unknown error.'}`;
+  }
   function escapeHtml(value) { return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character])); }
 }());
