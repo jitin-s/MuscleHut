@@ -50,6 +50,10 @@ create index if not exists articles_published_at_idx
 
 alter table public.articles enable row level security;
 
+grant usage on schema public to anon, authenticated;
+grant select on public.articles to anon, authenticated;
+grant insert, update, delete on public.articles to authenticated;
+
 create or replace function public.is_admin()
 returns boolean
 language sql
