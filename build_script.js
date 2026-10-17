@@ -49,7 +49,8 @@ function calculateRecommendation() {
   const result = document.getElementById('plannerResult');
   if (!age || !weight || !experience || !exercise) return;
   const isIsolation = /raise|curl|extension|pushdown|fly|pec deck|calf|crunch|face pull|mobility|breathing/i.test(exercise);
-  let sets = experience === 'new' ? 2 : experience === 'regular' ? 3 : 4;
+  let sets = experience === 'new' ? 2 : experience === 'regular' ? 4 : 5;
+  if (isIsolation) sets = Math.max(2, sets - 1);
   if (weight >= 100 && !isIsolation) sets = Math.max(2, sets - 1);
   if (age >= 50) sets = Math.max(2, sets - 1);
   let reps = goal === 'strength' ? (isIsolation ? '8-10' : '4-6') : goal === 'muscle' ? (isIsolation ? '10-15' : '8-12') : (isIsolation ? '12-15' : '8-12');

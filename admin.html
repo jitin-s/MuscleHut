@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muscle Hut Admin</title>
+  <link rel="stylesheet" href="article-pages.css">
+</head>
+<body>
+  <header class="article-nav"><a class="article-brand" href="index.html">MUSCLE <span>HUT</span></a><a href="articles.html">View articles</a></header>
+  <main class="admin-shell">
+    <section id="loginPanel" class="admin-card">
+      <p class="eyebrow">RESTRICTED ADMIN AREA</p><h1>ARTICLE CONTROL ROOM</h1>
+      <p class="muted">Sign in with the Supabase admin account. Passwords are managed by Supabase Auth and are never stored in this site.</p>
+      <form id="loginForm" class="admin-form">
+        <label>Email<input id="loginEmail" type="email" autocomplete="username" required></label>
+        <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label>
+        <button class="action-button" type="submit">SECURE SIGN IN</button>
+        <p id="loginMessage" class="form-message" role="alert"></p>
+      </form>
+    </section>
+    <section id="dashboardPanel" class="admin-card hidden">
+      <div class="dashboard-head"><div><p class="eyebrow">AUTHENTICATED ADMIN</p><h1>PUBLISH ARTICLE</h1></div><button id="logoutButton" class="ghost-button" type="button">SIGN OUT</button></div>
+      <form id="articleForm" class="admin-form">
+        <label>Title<input id="articleTitle" maxlength="160" required></label>
+        <label>URL slug<input id="articleSlug" maxlength="160" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required><small>lowercase words separated by hyphens</small></label>
+        <label>Author name<input id="articleAuthor" maxlength="80" required></label>
+        <label>Excerpt<textarea id="articleExcerpt" maxlength="300" rows="3" required></textarea></label>
+        <label>Article content<textarea id="articleContent" maxlength="50000" rows="14" required></textarea></label>
+        <label class="check-row"><input id="articlePublished" type="checkbox"> Publish immediately</label>
+        <button class="action-button" type="submit">SAVE ARTICLE</button>
+        <p id="articleMessage" class="form-message" role="status"></p>
+      </form>
+      <div><h2>Existing articles</h2><div id="adminArticleList" class="admin-list"></div></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
