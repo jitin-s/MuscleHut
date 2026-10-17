@@ -38,13 +38,19 @@
     <section id="dashboardPanel" class="admin-card hidden">
       <div class="dashboard-head"><div><p class="eyebrow">AUTHENTICATED ADMIN</p><h1>PUBLISH ARTICLE</h1></div><button id="logoutButton" class="ghost-button" type="button">SIGN OUT</button></div>
       <form id="articleForm" class="admin-form">
-        <label>Title<input id="articleTitle" maxlength="160" required></label>
-        <label>URL slug<input id="articleSlug" maxlength="160" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required><small>lowercase words separated by hyphens</small></label>
-        <label>Author name<input id="articleAuthor" maxlength="80" required></label>
-        <label>Excerpt<textarea id="articleExcerpt" maxlength="300" rows="3" required></textarea></label>
-        <label>Article content<textarea id="articleContent" maxlength="50000" rows="14" required></textarea></label>
+        <label>Title<input id="articleTitle" maxlength="160" required><small id="titleCount">0/160</small></label>
+        <label>URL slug<input id="articleSlug" maxlength="160" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required><small>Auto-generated from the title; lowercase words separated by hyphens</small></label>
+        <div class="form-grid">
+          <label>Author name<input id="articleAuthor" maxlength="80" required></label>
+          <label>Category<select id="articleCategory" required><option value="Training">Training</option><option value="Nutrition">Nutrition</option><option value="Recovery">Recovery</option><option value="Mindset">Mindset</option><option value="Gym Guides">Gym Guides</option></select></label>
+        </div>
+        <label>Cover image URL<input id="articleCoverImage" type="url" maxlength="500" placeholder="https://..."><small>Optional public image URL</small></label>
+        <label>Tags<input id="articleTags" maxlength="300" placeholder="strength, beginner, chest"><small>Separate tags with commas</small></label>
+        <label>Excerpt<textarea id="articleExcerpt" maxlength="300" rows="3" required></textarea><small id="excerptCount">0/300</small></label>
+        <label>Article content<textarea id="articleContent" maxlength="50000" rows="14" required placeholder="Write one paragraph at a time. Plain text is used for safety."></textarea><small><span id="contentCount">0/50000</span> · estimated reading time: <span id="readingTime">1 min</span></small></label>
+        <div class="article-preview-wrap"><div class="preview-heading"><strong>Live preview</strong><button id="togglePreview" class="ghost-button" type="button">HIDE PREVIEW</button></div><article id="articlePreview" class="article-preview"><p class="eyebrow">TRAINING · PREVIEW</p><h2>Your article title</h2><p class="preview-excerpt">Your excerpt will appear here.</p><div class="preview-body">Your article content preview will appear here.</div></article></div>
         <label class="check-row"><input id="articlePublished" type="checkbox"> Publish immediately</label>
-        <button class="action-button" type="submit">SAVE ARTICLE</button>
+        <div class="form-actions"><button class="ghost-button" id="saveDraftButton" type="submit">SAVE DRAFT</button><button class="action-button" id="publishButton" type="submit">PUBLISH ARTICLE</button></div>
         <p id="articleMessage" class="form-message" role="status"></p>
       </form>
       <div><h2>Existing articles</h2><div id="adminArticleList" class="admin-list"></div></div>

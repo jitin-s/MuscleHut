@@ -19,6 +19,32 @@ create table if not exists public.articles (
   updated_at timestamptz not null default timezone('utc', now())
 );
 
+alter table public.articles
+  add column if not exists category text not null default 'Training'
+    check (char_length(category) between 2 and 40);
+
+alter table public.articles
+  add column if not exists tags text[] not null default '{}';
+
+alter table public.articles
+  add column if not exists reading_time_minutes integer not null default 1
+    check (reading_time_minutes between 1 and 120);
+
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'articles_cover_image_url_length'
+      and conrelid = 'public.articles'::regclass
+  ) then
+    alter table public.articles
+      add constraint articles_cover_image_url_length
+      check (cover_image_url is null or char_length(cover_image_url) <= 500);
+  end if;
+end
+$$;
+
 create index if not exists articles_published_at_idx
   on public.articles (published, published_at desc);
 
