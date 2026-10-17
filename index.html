@@ -2785,6 +2785,15 @@ body.menu-open { overflow: hidden; }
 .workout-hero h1 span { color: var(--primary); text-shadow: 0 0 24px var(--primary-glow); }
 .workout-hero-copy > p { max-width: 650px; color: var(--text-light); font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.75; }
 .workout-hero-visual { min-height: 430px; position: relative; display: grid; place-items: center; }
+.membership-section { padding: 34px 0; background: var(--bg-darkest); }
+.membership-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 30px 36px; background: linear-gradient(110deg, var(--bg-surface), rgba(255,107,44,.13)); border: 1px solid rgba(255,107,44,.45); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.membership-kicker { margin-bottom: 8px; color: var(--primary); font-size: .75rem; font-weight: 800; letter-spacing: 2px; }
+.membership-card h2 { margin-bottom: 8px; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 1px; }
+.membership-card p:not(.membership-kicker) { max-width: 580px; color: var(--text-muted); }
+.membership-price { min-width: 220px; display: flex; flex-direction: column; align-items: center; padding-left: 30px; border-left: 1px solid var(--border-light); }
+.membership-price span { color: var(--text-muted); font-size: .72rem; font-weight: 800; letter-spacing: 2px; }
+.membership-price strong { color: var(--primary); font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.8rem); line-height: .95; }
+.membership-price small { margin-bottom: 16px; color: var(--text-muted); }
 .hero-weight-card { width: min(100%, 390px); aspect-ratio: 1 / 1.12; padding: 44px 38px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: linear-gradient(145deg, rgba(255,107,44,.96), rgba(154,46,15,.94)); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); box-shadow: 30px 30px 0 rgba(255,183,3,.18), 0 25px 65px rgba(0,0,0,.45); transform: rotate(4deg); }
 .hero-weight-card span { font-size: .75rem; font-weight: 800; letter-spacing: 3px; }
 .hero-weight-card strong { max-width: 100%; font-family: var(--font-display); font-size: clamp(3.4rem, 6.4vw, 5.5rem); line-height: .84; letter-spacing: 1px; overflow-wrap: break-word; }
@@ -2857,6 +2866,8 @@ body.menu-open { overflow: hidden; }
   .planner-field label { font-size: .85rem; }
   .planner-field input, .planner-field select { min-height: 54px; font-size: 1rem; }
   .workout-footer .container { flex-direction: column; }
+  .membership-card { flex-direction: column; align-items: stretch; padding: 26px 22px; }
+  .membership-price { min-width: 0; padding: 22px 0 0; border-top: 1px solid var(--border-light); border-left: 0; }
 }
 
   </style>
@@ -2877,14 +2888,15 @@ body.menu-open { overflow: hidden; }
       <div class="brand-icon-box"><svg class="brand-logo-svg" viewBox="0 0 44 44" aria-hidden="true"><rect x="3" y="3" width="38" height="38" rx="11" fill="rgba(255,107,44,.12)" stroke="currentColor" stroke-width="2"/><path d="M11 22h22M15 17v10M29 17v10M18 19h8v6h-8z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
       <div class="brand-text-col"><div class="brand-main-title">MUSCLE <span>HUT</span></div><div class="brand-sub-location">SECTOR 15 • SONIPAT</div></div>
     </a>
-    <nav aria-label="Primary navigation"><ul class="navbar-nav"><li><a class="nav-link active" href="#home">Home</a></li><li><a class="nav-link" href="#split">Weekly Split</a></li><li><a class="nav-link" href="#planner">Rep Planner</a></li><li><a class="nav-link" href="#library">Exercise Library</a></li><li><a class="nav-link" href="articles.html">Blog</a></li></ul></nav>
+    <nav aria-label="Primary navigation"><ul class="navbar-nav"><li><a class="nav-link active" href="#home">Home</a></li><li><a class="nav-link" href="#membership">Membership</a></li><li><a class="nav-link" href="#split">Weekly Split</a></li><li><a class="nav-link" href="#planner">Rep Planner</a></li><li><a class="nav-link" href="#library">Exercise Library</a></li><li><a class="nav-link" href="articles.html">Blog</a></li></ul></nav>
     <div class="nav-right-controls"><a href="#planner" class="btn btn-primary btn-sm">BUILD PLAN</a><button class="hamburger-toggle" id="hamburgerBtn" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button></div>
   </div>
 </header>
-<div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true"><ul class="mobile-nav-links"><li><a class="nav-link mobile-link" href="#home">Home</a></li><li><a class="nav-link mobile-link" href="#split">Weekly Split</a></li><li><a class="nav-link mobile-link" href="#planner">Rep Planner</a></li><li><a class="nav-link mobile-link" href="#library">Exercise Library</a></li><li><a class="nav-link mobile-link" href="articles.html">Blog</a></li></ul><a href="#planner" class="btn btn-primary mobile-link">BUILD MY PLAN</a></div>
+<div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true"><ul class="mobile-nav-links"><li><a class="nav-link mobile-link" href="#home">Home</a></li><li><a class="nav-link mobile-link" href="#membership">Membership</a></li><li><a class="nav-link mobile-link" href="#split">Weekly Split</a></li><li><a class="nav-link mobile-link" href="#planner">Rep Planner</a></li><li><a class="nav-link mobile-link" href="#library">Exercise Library</a></li><li><a class="nav-link mobile-link" href="articles.html">Blog</a></li></ul><a href="#planner" class="btn btn-primary mobile-link">BUILD MY PLAN</a></div>
 
 <main>
 <section class="workout-hero" id="home"><div class="hero-grid-pattern"></div><div class="container workout-hero-grid"><div class="workout-hero-copy"><div class="hero-badge-tag"><svg class="svg-icon"><use href="#icon-dumbbell"></use></svg> SIMPLE. STRUCTURED. STRONG.</div><h1>TRAIN WITH A <span>PLAN.</span><br>GET RESULTS.</h1><p>A clean gym guide for your week. Choose the right day, pick an exercise, and get a practical sets-and-reps starting point built around your age, experience, and body weight.</p><div class="hero-cta-group"><a href="#planner" class="btn btn-primary btn-lg"><svg class="svg-icon"><use href="#icon-bolt"></use></svg> GET MY SETS & REPS</a><a href="#split" class="btn btn-secondary btn-lg">VIEW WEEKLY SPLIT</a></div></div><div class="workout-hero-visual"><div class="hero-weight-card"><span>WEEKLY FOCUS</span><strong>BUILD<br>CONSISTENCY</strong><div class="weight-line"><i></i><i></i><i></i><i></i><i></i></div><small>Progress one session at a time.</small></div></div></div></section>
+<section class="membership-section" id="membership"><div class="container membership-card"><div><p class="membership-kicker">MUSCLE HUT MEMBERSHIP</p><h2>TRAIN WITHOUT LIMITS.</h2><p>Get full gym access and use the weekly workout planner to stay consistent every month.</p></div><div class="membership-price"><span>1 MONTH</span><strong>₹1,500</strong><small>per month</small><a href="#planner" class="btn btn-primary">START YOUR PLAN</a></div></div></section>
 
 <section class="section-padding split-section" id="split"><div class="container"><div class="section-header"><div class="section-subtitle-badge"><svg class="svg-icon"><use href="#icon-calendar"></use></svg> WORLDWIDE TRAINING SPLIT</div><h2 class="section-title">YOUR <span class="text-neon">WEEKLY PLAN</span></h2><p class="section-description">Use this beginner-friendly weekly structure used across strength and muscle-building programs. Rest days are part of the plan.</p></div><div class="split-grid" id="splitGrid"></div></div></section>
 

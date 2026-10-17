@@ -2768,6 +2768,15 @@ body.menu-open { overflow: hidden; }
 .workout-hero h1 span { color: var(--primary); text-shadow: 0 0 24px var(--primary-glow); }
 .workout-hero-copy > p { max-width: 650px; color: var(--text-light); font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.75; }
 .workout-hero-visual { min-height: 430px; position: relative; display: grid; place-items: center; }
+.membership-section { padding: 34px 0; background: var(--bg-darkest); }
+.membership-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 30px 36px; background: linear-gradient(110deg, var(--bg-surface), rgba(255,107,44,.13)); border: 1px solid rgba(255,107,44,.45); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+.membership-kicker { margin-bottom: 8px; color: var(--primary); font-size: .75rem; font-weight: 800; letter-spacing: 2px; }
+.membership-card h2 { margin-bottom: 8px; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 1px; }
+.membership-card p:not(.membership-kicker) { max-width: 580px; color: var(--text-muted); }
+.membership-price { min-width: 220px; display: flex; flex-direction: column; align-items: center; padding-left: 30px; border-left: 1px solid var(--border-light); }
+.membership-price span { color: var(--text-muted); font-size: .72rem; font-weight: 800; letter-spacing: 2px; }
+.membership-price strong { color: var(--primary); font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.8rem); line-height: .95; }
+.membership-price small { margin-bottom: 16px; color: var(--text-muted); }
 .hero-weight-card { width: min(100%, 390px); aspect-ratio: 1 / 1.12; padding: 44px 38px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: linear-gradient(145deg, rgba(255,107,44,.96), rgba(154,46,15,.94)); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); box-shadow: 30px 30px 0 rgba(255,183,3,.18), 0 25px 65px rgba(0,0,0,.45); transform: rotate(4deg); }
 .hero-weight-card span { font-size: .75rem; font-weight: 800; letter-spacing: 3px; }
 .hero-weight-card strong { max-width: 100%; font-family: var(--font-display); font-size: clamp(3.4rem, 6.4vw, 5.5rem); line-height: .84; letter-spacing: 1px; overflow-wrap: break-word; }
@@ -2840,4 +2849,6 @@ body.menu-open { overflow: hidden; }
   .planner-field label { font-size: .85rem; }
   .planner-field input, .planner-field select { min-height: 54px; font-size: 1rem; }
   .workout-footer .container { flex-direction: column; }
+  .membership-card { flex-direction: column; align-items: stretch; padding: 26px 22px; }
+  .membership-price { min-width: 0; padding: 22px 0 0; border-top: 1px solid var(--border-light); border-left: 0; }
 }
