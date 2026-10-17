@@ -19,6 +19,22 @@
         <p id="loginMessage" class="form-message" role="alert"></p>
       </form>
     </section>
+    <section id="mfaPanel" class="admin-card hidden">
+      <p class="eyebrow">MULTI-FACTOR SECURITY</p><h1>VERIFY ADMIN ACCESS</h1>
+      <p id="mfaIntro" class="muted">Use an authenticator app such as Google Authenticator, Microsoft Authenticator, or 1Password.</p>
+      <div id="mfaEnrollment" class="mfa-enrollment hidden">
+        <p>Scan this QR code, then enter the six-digit code from your authenticator app.</p>
+        <img id="mfaQrCode" class="mfa-qr" alt="Authenticator setup QR code">
+        <p class="mfa-secret-label">Manual setup key</p>
+        <code id="mfaSecret"></code>
+      </div>
+      <form id="mfaForm" class="admin-form">
+        <label>Authenticator code<input id="mfaCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required></label>
+        <button class="action-button" type="submit">VERIFY CODE</button>
+        <button id="mfaCancelButton" class="ghost-button" type="button">CANCEL</button>
+        <p id="mfaMessage" class="form-message" role="alert"></p>
+      </form>
+    </section>
     <section id="dashboardPanel" class="admin-card hidden">
       <div class="dashboard-head"><div><p class="eyebrow">AUTHENTICATED ADMIN</p><h1>PUBLISH ARTICLE</h1></div><button id="logoutButton" class="ghost-button" type="button">SIGN OUT</button></div>
       <form id="articleForm" class="admin-form">
