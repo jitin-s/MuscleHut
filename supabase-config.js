@@ -2,5 +2,5 @@
 window.MUSCLE_HUT_SUPABASE = {
   url: 'https://your-project.supabase.co',
   anonKey: 'your-publishable-or-anon-key',
-  requireMfa: true
+  requireMfa: false
 };
